@@ -1,0 +1,17 @@
+  /* ================= RADAR CHART / HEATMAP ================= */
+  .radar-wrap{ display:flex; justify-content:center; padding:10px 0; }
+  .heatmap-grid{ display:grid; grid-template-columns:repeat(26,1fr); gap:3px; margin-top:14px; }
+  .heat-cell{ aspect-ratio:1; border-radius:2px; background:var(--surface-2); }
+  .heatmap-legend{ display:flex; align-items:center; gap:6px; margin-top:10px; font-size:10.5px; color:var(--text-faint); }
+  .heatmap-legend .heat-cell{ width:11px; height:11px; aspect-ratio:unset; }
+
+  /* ================= SYSTEM MONITOR ================= */
+  .sysmon-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  
+  .sysmon-card{ background:var(--surface-2); border:1px solid var(--border); border-radius:8px; padding:14px; }
+  .sysmon-label{ font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.5px; margin-bottom:8px; }
+  .sysmon-val{ font-size:22px; font-weight:700; color:var(--green); font-family:var(--mono); }
+  .sysmon-bar{ height:4px; background:var(--muted); border-radius:2px; margin-top:8px; overflow:hidden; }
+  .sysmon-bar-fill{ height:100%; background:var(--green); transition:width .5s ease; }
+  .sysmon-spark{ display:flex; align-items:flex-end; gap:1px; height:26px; margin-top:8px; }
+  .sysmon-spark div{ flex:1; background:var(--green); opacity:.6; border-radius:1px 1px 0 0; transition:height .3s ease; }
