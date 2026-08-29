@@ -1,0 +1,36 @@
+:root{
+    --bg:#0A0708;
+    --bg-soft:#0F0A0B;
+    --surface:#150F11;
+    --surface-2:#1B1315;
+    --muted:#201719;
+    --border:#2E1F22;
+    --border-soft:#221619;
+    --text:#F1E7E6;
+    --text-dim:#A79997;
+    --text-faint:#6C5D5C;
+    --green:#FF3B4E;
+    --green-dim:#C4283A;
+    --green-glow:rgba(255,59,78,0.35);
+    --green-bg:#2A0E12;
+    --cyan:#6FA8DC;
+    --cyan-bg:#101823;
+    --amber:#E8B75B;
+    --red:#FF7A45;
+    --mono:'JetBrains Mono', monospace;
+    --mono2:'Space Mono', monospace;
+    --display:'Lexend Deca', sans-serif;
+    --radius:10px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--text); font-family:var(--mono);
+    line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+    font-size:14.5px;
+    zoom:0.9;
+  }
+  a{ color:var(--green); text-decoration:none; }
+  a:hover{ color:var(--cyan); }
+  ::selection{ background:var(--green); color:#07090A; }
+  .wrap{ max-width:1320px; margin:0 auto; padding:0 48px; position:relative; z-index:2; }
