@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games — Saboor Shawkat</title>
+<link rel="icon" type="image/png" href="assets/profile.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Lexend+Deca:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/topbar-nav.css">
+<link rel="stylesheet" href="css/site-menu.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/cards.css">
+<link rel="stylesheet" href="css/games.css">
+<link rel="stylesheet" href="css/widgets.css">
+<link rel="stylesheet" href="css/effects.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<!--
+  nice try. FLAG{h1dden_1n_html}
+  there are 3 more flags scattered around this page. good luck.
+-->
+<canvas id="matrix"></canvas>
+<canvas id="particles"></canvas>
+<div class="grid-overlay"></div>
+<div class="grain"></div>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<div class="scroll-bar" id="scrollBar"></div>
+<div class="toast" id="toast"></div>
+<div id="hackerTyperOverlay"><span id="htContent"></span><span class="ht-hint">press ESC to exit hacker-typer mode</span></div>
+
+<div class="fx-controls">
+  <button class="fx-btn" id="crtToggle" title="Toggle CRT effect">crt</button>
+  <button class="fx-btn" id="audioAmbientToggle" title="Toggle ambient audio">♪</button>
+  <button class="fx-btn" id="hackerTyperToggle" title="Hacker-typer mode">ht</button>
+</div>
+<div class="theme-switch" id="themeSwitch">
+  <div class="theme-dot active" data-t="green" title="green"></div>
+  <div class="theme-dot" data-t="cyan" title="cyan"></div>
+  <div class="theme-dot" data-t="purple" title="purple"></div>
+  <div class="theme-dot" data-t="amber" title="amber"></div>
+</div>
+
+<div class="cmdk-overlay" id="cmdkOverlay">
+  <div class="cmdk-box">
+    <div class="cmdk-input-row">
+      <span class="cmdk-prompt">$</span>
+      <input type="text" id="cmdkInput" class="cmdk-input" placeholder="type a command or search sections..." autocomplete="off" spellcheck="false">
+      <span class="cmdk-esc">esc</span>
+    </div>
+    <div class="cmdk-results" id="cmdkResults"></div>
+  </div>
+</div>
+
+<div class="unlock-overlay" id="unlockOverlay">
+  <div class="unlock-box">
+    <div class="unlock-flags">⚑⚑⚑⚑</div>
+    <div class="unlock-eyebrow">access granted — 4/4 flags redeemed</div>
+    <h3 class="unlock-title">Alright, you actually found all of them.</h3>
+    <p class="unlock-msg">Most people click around for ten seconds and bounce. You read the source, opened the console, and dug through the DOM — that's the exact instinct that makes a good red teamer. If you're building something, hiring, or just want to talk shop, I'd genuinely like to hear from you.</p>
+    <div class="unlock-sig">— Saboor</div>
+    <div class="unlock-actions">
+      <button class="btn btn-primary" id="unlockContactBtn">Contact Me →</button>
+      <button class="btn btn-ghost" id="unlockCloseBtn">close</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="tb-user"><img class="tb-logo" src="assets/profile.png" alt="Saboor Shawkat"><span class="dot"></span> saboor@:~$ <span id="typeStatus"></span></div>
+    <div class="tb-right">
+      <button class="tb-flags" id="tbFlags" title="Flags found">⚑ <span id="flagCount">0</span>/4</button>
+      <button class="tb-cmdk" id="tbCmdk" title="Command palette">⌘K</button>
+      <div class="tb-clock" id="clock">--:--:--</div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="games">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">01</span><h2>GAMES</h2><span class="tag" style="margin-left:auto;">portfolio</span></div>
+    <p class="sec-desc bf">Two small breaks. Neither one is graded.</p>
+    <div class="game-grid bf">
+      <div class="game-card">
+        <div class="skill-cat-name">typing speed</div>
+        <div class="typing-target" id="typingTarget"></div>
+        <div class="typing-stats">
+          <div>WPM<b id="typingWpm">0</b></div>
+          <div>Accuracy<b id="typingAcc">100%</b></div>
+        </div>
+        <input type="text" id="typingInput" class="term-input" style="margin-top:10px;" autocomplete="off" placeholder="click here and start typing the line above" spellcheck="false">
+        <button type="button" class="btn btn-ghost" id="typingReset" style="margin-top:10px;">reset</button>
+      </div>
+      <div class="game-card">
+        <div class="skill-cat-name">memory match</div>
+        <p style="font-size:12px;color:var(--text-faint);margin:6px 0 0;">Match the pairs. <span id="memMoves">0</span> moves.</p>
+        <div class="memory-grid" id="memoryGrid"></div>
+        <button type="button" class="btn btn-ghost" id="memReset" style="margin-top:10px;">shuffle</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FLOATING DOCK -->
+<div class="dock-wrap">
+  <nav class="dock" id="dock">
+    <button class="dock-item" data-href="index.html#about"><span class="dock-tooltip">about</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 19a6 6 0 0111 0"/></svg>
+    </button>
+    <button class="dock-item" data-href="index.html#projects"><span class="dock-tooltip">projects</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4.2l1.6 2H19a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+    </button>
+    <div class="dock-sep"></div>
+    <button class="dock-item" data-href="tools.html#tools"><span class="dock-tooltip">tools</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.65 2.65a1.4 1.4 0 01-2-2L14.7 6.3z"/></svg>
+    </button>
+    <button class="dock-item" data-href="#games"><span class="dock-tooltip">games</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="10" rx="5"/><path d="M7 11v4M5 13h4"/><circle cx="15.5" cy="12" r="1"/><circle cx="18" cy="14.5" r="1"/></svg>
+    </button>
+    <div class="dock-sep"></div>
+    <button class="dock-item" data-href="other.html#ctfs"><span class="dock-tooltip">ctf log</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h13l-2.5 3.5L18 11H5"/></svg>
+    </button>
+    <div class="dock-sep"></div>
+    <button class="dock-item" data-href="#"><span class="dock-tooltip">github</span>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.51-3.5-.7-3.72-1.34-.13-.34-.68-1.38-1.16-1.66-.4-.22-.97-.76-.01-.77.9-.01 1.54.85 1.76 1.2 1.03 1.75 2.67 1.26 3.32.96.1-.75.4-1.26.72-1.55-2.55-.29-5.23-1.31-5.23-5.79 0-1.28.44-2.32 1.16-3.14-.12-.29-.5-1.48.11-3.08 0 0 .95-.31 3.1 1.2a10.5 10.5 0 015.64 0c2.15-1.51 3.1-1.2 3.1-1.2.61 1.6.23 2.79.11 3.08.72.82 1.16 1.85 1.16 3.14 0 4.49-2.69 5.5-5.25 5.78.41.36.77 1.07.77 2.17 0 1.57-.01 2.83-.01 3.22 0 .28.18.61.69.5C19.14 20.6 22 16.76 22 12.25 22 6.58 17.52 2 12 2z"/></svg>
+    </button>
+    <button class="dock-item" data-href="#"><span class="dock-tooltip">x</span>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.4l8.2-9.4L1 2h7l4.9 6.1L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg>
+    </button>
+    <button class="dock-item" data-href="mailto:hello@schoolofsec.com"><span class="dock-tooltip">email</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l8.5 6a2.5 2.5 0 003 0L22 7"/></svg>
+    </button>
+  </nav>
+</div>
+
+<!-- MOBILE OFF-CANVAS MENU (takes over from the dock below 760px) -->
+<button class="menu-fab" id="menuFab" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+  <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+</button>
+<div class="mm-overlay" id="mmOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mm-handle"></div>
+  <div class="mm-head">
+    <span class="mm-title">menu</span>
+    <button class="mm-close" id="mmClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
+  </div>
+
+  <div class="mm-group">
+    <span class="mm-group-label">navigate</span>
+    <button class="mm-item" data-href="index.html#about">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 19a6 6 0 0111 0"/></svg></span>
+      about
+    </button>
+    <button class="mm-item" data-href="index.html#projects">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4.2l1.6 2H19a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg></span>
+      projects
+    </button>
+  </div>
+
+  <div class="mm-group">
+    <span class="mm-group-label">explore</span>
+    <button class="mm-item" data-href="tools.html#tools">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.65 2.65a1.4 1.4 0 01-2-2L14.7 6.3z"/></svg></span>
+      tools
+    </button>
+    <button class="mm-item" data-href="#games">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="10" rx="5"/><path d="M7 11v4M5 13h4"/><circle cx="15.5" cy="12" r="1"/><circle cx="18" cy="14.5" r="1"/></svg></span>
+      games
+    </button>
+    <button class="mm-item" data-href="other.html#ctfs">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h13l-2.5 3.5L18 11H5"/></svg></span>
+      ctf log
+    </button>
+  </div>
+
+  <div class="mm-group">
+    <span class="mm-group-label">connect</span>
+    <button class="mm-item" data-href="#">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.51-3.5-.7-3.72-1.34-.13-.34-.68-1.38-1.16-1.66-.4-.22-.97-.76-.01-.77.9-.01 1.54.85 1.76 1.2 1.03 1.75 2.67 1.26 3.32.96.1-.75.4-1.26.72-1.55-2.55-.29-5.23-1.31-5.23-5.79 0-1.28.44-2.32 1.16-3.14-.12-.29-.5-1.48.11-3.08 0 0 .95-.31 3.1 1.2a10.5 10.5 0 015.64 0c2.15-1.51 3.1-1.2 3.1-1.2.61 1.6.23 2.79.11 3.08.72.82 1.16 1.85 1.16 3.14 0 4.49-2.69 5.5-5.25 5.78.41.36.77 1.07.77 2.17 0 1.57-.01 2.83-.01 3.22 0 .28.18.61.69.5C19.14 20.6 22 16.76 22 12.25 22 6.58 17.52 2 12 2z"/></svg></span>
+      github
+    </button>
+    <button class="mm-item" data-href="#">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.4l8.2-9.4L1 2h7l4.9 6.1L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg></span>
+      x
+    </button>
+    <button class="mm-item" data-href="mailto:hello@schoolofsec.com">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l8.5 6a2.5 2.5 0 003 0L22 7"/></svg></span>
+      email
+    </button>
+  </div>
+</nav>
+
+<script src="js/matrix-rain.js"></script>
+<script src="js/clock-status.js"></script>
+<script src="js/scroll-effects.js"></script>
+<script src="js/nav-dock.js"></script>
+<script src="js/mobile-menu.js"></script>
+<script src="js/scrollspy.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/clipboard.js"></script>
+<script src="js/konami.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/tool-hash.js"></script>
+<script src="js/tool-cipher.js"></script>
+<script src="js/tool-password.js"></script>
+<script src="js/tool-subnet.js"></script>
+<script src="js/widget-github-stats.js"></script>
+<script src="js/flags-achievements.js"></script>
+<script src="js/cmdk.js"></script>
+<script src="js/guestbook.js"></script>
+<script src="js/theme-switcher.js"></script>
+<script src="js/crt-toggle.js"></script>
+<script src="js/holographic.js"></script>
+<script src="js/tilt-cards.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/tool-jwt.js"></script>
+<script src="js/tool-base64.js"></script>
+<script src="js/tool-hex.js"></script>
+<script src="js/tool-network.js"></script>
+<script src="js/widget-radar-chart.js"></script>
+<script src="js/widget-heatmap.js"></script>
+<script src="js/widget-sysmon.js"></script>
+<script src="js/audio-system.js"></script>
+<script src="js/hacker-typer.js"></script>
+<script src="js/ai-assistant.js"></script>
+<script src="js/game-typing.js"></script>
+<script src="js/game-memory.js"></script>
+<script src="js/greeting.js"></script>
+</body>
+</html>

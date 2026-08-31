@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Other — Saboor Shawkat</title>
+<link rel="icon" type="image/png" href="assets/profile.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Lexend+Deca:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/topbar-nav.css">
+<link rel="stylesheet" href="css/site-menu.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/cards.css">
+<link rel="stylesheet" href="css/games.css">
+<link rel="stylesheet" href="css/widgets.css">
+<link rel="stylesheet" href="css/effects.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<!--
+  nice try. FLAG{h1dden_1n_html}
+  there are 3 more flags scattered around this page. good luck.
+-->
+<canvas id="matrix"></canvas>
+<canvas id="particles"></canvas>
+<div class="grid-overlay"></div>
+<div class="grain"></div>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<div class="scroll-bar" id="scrollBar"></div>
+<div class="toast" id="toast"></div>
+<div id="hackerTyperOverlay"><span id="htContent"></span><span class="ht-hint">press ESC to exit hacker-typer mode</span></div>
+
+<div class="fx-controls">
+  <button class="fx-btn" id="crtToggle" title="Toggle CRT effect">crt</button>
+  <button class="fx-btn" id="audioAmbientToggle" title="Toggle ambient audio">♪</button>
+  <button class="fx-btn" id="hackerTyperToggle" title="Hacker-typer mode">ht</button>
+</div>
+<div class="theme-switch" id="themeSwitch">
+  <div class="theme-dot active" data-t="green" title="green"></div>
+  <div class="theme-dot" data-t="cyan" title="cyan"></div>
+  <div class="theme-dot" data-t="purple" title="purple"></div>
+  <div class="theme-dot" data-t="amber" title="amber"></div>
+</div>
+
+<div class="cmdk-overlay" id="cmdkOverlay">
+  <div class="cmdk-box">
+    <div class="cmdk-input-row">
+      <span class="cmdk-prompt">$</span>
+      <input type="text" id="cmdkInput" class="cmdk-input" placeholder="type a command or search sections..." autocomplete="off" spellcheck="false">
+      <span class="cmdk-esc">esc</span>
+    </div>
+    <div class="cmdk-results" id="cmdkResults"></div>
+  </div>
+</div>
+
+<div class="unlock-overlay" id="unlockOverlay">
+  <div class="unlock-box">
+    <div class="unlock-flags">⚑⚑⚑⚑</div>
+    <div class="unlock-eyebrow">access granted — 4/4 flags redeemed</div>
+    <h3 class="unlock-title">Alright, you actually found all of them.</h3>
+    <p class="unlock-msg">Most people click around for ten seconds and bounce. You read the source, opened the console, and dug through the DOM — that's the exact instinct that makes a good red teamer. If you're building something, hiring, or just want to talk shop, I'd genuinely like to hear from you.</p>
+    <div class="unlock-sig">— Saboor</div>
+    <div class="unlock-actions">
+      <button class="btn btn-primary" id="unlockContactBtn">Contact Me →</button>
+      <button class="btn btn-ghost" id="unlockCloseBtn">close</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="tb-user"><img class="tb-logo" src="assets/profile.png" alt="Saboor Shawkat"><span class="dot"></span> saboor@:~$ <span id="typeStatus"></span></div>
+    <div class="tb-right">
+      <button class="tb-flags" id="tbFlags" title="Flags found">⚑ <span id="flagCount">0</span>/4</button>
+      <button class="tb-cmdk" id="tbCmdk" title="Command palette">⌘K</button>
+      <div class="tb-clock" id="clock">--:--:--</div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="methodology">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">01</span><h2>METHODOLOGY</h2></div>
+    <p class="sec-desc bf">How an engagement moves from scope to report — loosely mapped to MITRE ATT&amp;CK tactics.</p>
+    <div class="kc-wrap bf">
+      <div class="kc-track"></div>
+      <div class="kc-stage">
+        <div class="kc-num">01</div>
+        <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <div class="kc-name">Reconnaissance</div>
+        <div class="kc-desc">OSINT, asset discovery, and attack-surface mapping before a single packet touches the target.</div>
+        <div class="kc-tag">TA0043</div>
+      </div>
+      <div class="kc-stage">
+        <div class="kc-num">02</div>
+        <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4-8 4-8-4 8-4z"/><path d="M4 10l8 4 8-4"/><path d="M4 16l8 4 8-4"/></svg></div>
+        <div class="kc-name">Initial Access</div>
+        <div class="kc-desc">Phishing pretexts, exposed-service exploitation, or credential stuffing to get a first foothold.</div>
+        <div class="kc-tag">TA0001</div>
+      </div>
+      <div class="kc-stage">
+        <div class="kc-num">03</div>
+        <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7l3-7z"/></svg></div>
+        <div class="kc-name">Persistence &amp; Priv-Esc</div>
+        <div class="kc-desc">Establishing durable access and escalating from a low-priv foothold toward domain-level control.</div>
+        <div class="kc-tag">TA0003 · TA0004</div>
+      </div>
+      <div class="kc-stage">
+        <div class="kc-num">04</div>
+        <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.5 8.5L15.5 15.5"/><circle cx="18" cy="6" r="3"/><path d="M15.5 8.5L18 8"/></svg></div>
+        <div class="kc-name">Lateral Movement</div>
+        <div class="kc-desc">Pivoting across the network — AD enumeration, credential harvesting, and hop-by-hop expansion.</div>
+        <div class="kc-tag">TA0008</div>
+      </div>
+      <div class="kc-stage">
+        <div class="kc-num">05</div>
+        <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
+        <div class="kc-name">Objective &amp; Exfil</div>
+        <div class="kc-desc">Reaching the agreed "crown jewel" — data, admin access, or a business-critical system — and proving it.</div>
+        <div class="kc-tag">TA0010</div>
+      </div>
+      <div class="kc-stage">
+        <div class="kc-num">06</div>
+        <div class="kc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <div class="kc-name">Reporting</div>
+        <div class="kc-desc">Findings, impact, and prioritized remediation — written for both engineers and leadership.</div>
+        <div class="kc-tag">Deliverable</div>
+      </div>
+    </div>
+  </section>
+  <section id="github-stats">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">02</span><h2>GITHUB STATS</h2></div>
+    <p class="sec-desc bf">Live pull from the GitHub API — <a href="#" id="ghProfileLink">github.com/saboorshawkat</a>.</p>
+    <div class="gh-card bf" id="ghCard">
+      <div class="gh-row" id="ghLoading">
+        <span class="gh-spinner"></span> fetching github.com/<span id="ghUsername">saboorshawkat</span>...
+      </div>
+    </div>
+    <div class="visitor-strip bf">
+      <span class="visitor-dot"></span>
+      <span id="visitorCount">connecting...</span>
+    </div>
+    <div class="bf" style="margin-top:20px;">
+      <div class="sec-desc" style="font-size:12px;color:var(--text-faint);margin-bottom:0;">contribution activity (mock data)</div>
+      <div class="heatmap-grid" id="heatmapGrid"></div>
+      <div class="heatmap-legend"><span>less</span><div class="heat-cell" data-lvl="0"></div><div class="heat-cell" data-lvl="1"></div><div class="heat-cell" data-lvl="2"></div><div class="heat-cell" data-lvl="3"></div><div class="heat-cell" data-lvl="4"></div><span>more</span></div>
+    </div>
+  </section>
+  <section id="ctfs">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">03</span><h2>CAPTURE THE FLAG</h2></div>
+    <div class="bf">
+      <div class="ctf-item">
+        <span class="ctf-flag">⚑</span>
+        <div>
+          <div class="ctf-date">march 2025</div>
+          <div class="ctf-name">HackTheBox — Starting Point</div>
+          <div class="ctf-loc">online</div>
+          <div class="ctf-desc">Completed the beginner track end to end — enumeration, common web vulns, basic privilege escalation.</div>
+        </div>
+      </div>
+      <div class="ctf-item">
+        <span class="ctf-flag">⚑</span>
+        <div>
+          <div class="ctf-date">january 2025</div>
+          <div class="ctf-name">TryHackMe — Offensive Pentesting Path</div>
+          <div class="ctf-loc">online</div>
+          <div class="ctf-desc">Worked through Active Directory attacks, web exploitation rooms, and privilege escalation labs.</div>
+        </div>
+      </div>
+      <div class="ctf-item">
+        <span class="ctf-flag">⚑</span>
+        <div>
+          <div class="ctf-date">2024</div>
+          <div class="ctf-name">Local University CTF</div>
+          <div class="ctf-loc">campus</div>
+          <div class="ctf-desc">First team CTF — placed top 10, mostly working crypto and web categories.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="sysmon">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">04</span><h2>sys --monitor</h2></div>
+    <p class="sec-desc bf">Simulated resource usage — random-walked, not pulled from anywhere real.</p>
+    <div class="sysmon-grid bf">
+      <div class="sysmon-card">
+        <div class="sysmon-label">cpu</div>
+        <div class="sysmon-val" id="sysCpuVal">—%</div>
+        <div class="sysmon-bar"><div class="sysmon-bar-fill" id="sysCpuBar" style="width:0%"></div></div>
+        <div class="sysmon-spark" id="sysCpuSpark"></div>
+      </div>
+      <div class="sysmon-card">
+        <div class="sysmon-label">memory</div>
+        <div class="sysmon-val" id="sysRamVal">—%</div>
+        <div class="sysmon-bar"><div class="sysmon-bar-fill" id="sysRamBar" style="width:0%"></div></div>
+        <div class="sysmon-spark" id="sysRamSpark"></div>
+      </div>
+      <div class="sysmon-card">
+        <div class="sysmon-label">network</div>
+        <div class="sysmon-val" id="sysNetVal">— KB/s</div>
+        <div class="sysmon-bar"><div class="sysmon-bar-fill" id="sysNetBar" style="width:0%"></div></div>
+        <div class="sysmon-spark" id="sysNetSpark"></div>
+      </div>
+    </div>
+    <div class="audio-panel bf" style="margin-top:20px;">
+      <button type="button" class="audio-btn" id="typingSoundToggle">typing sounds: off</button>
+      <canvas id="audioViz"></canvas>
+    </div>
+  </section>
+  <section id="ai-assistant">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">05</span><h2>assistant --chat</h2></div>
+    <p class="sec-desc bf">A tiny scripted assistant — pattern-matches a handful of questions about this site. Type <b style="color:var(--green)">ls</b> or <b style="color:var(--green)">cd &lt;dir&gt;</b> for a fake file explorer, or ask about "skills", "projects", "contact", "ctf".</p>
+    <div class="code-block bf">
+      <div class="code-bar">
+        <span class="cdot r"></span><span class="cdot y"></span><span class="cdot g"></span>
+        <span class="code-file">assistant.py</span>
+      </div>
+      <div id="aiChatLog" style="padding:16px; max-height:260px; overflow-y:auto;">
+        <div class="ai-msg bot">hey — ask me about skills, projects, ctfs, or contact info. or try <b>ls</b>.</div>
+      </div>
+      <div class="term-input-row">
+        <span class="term-prompt">you:</span>
+        <input type="text" id="aiInput" class="term-input" autocomplete="off" spellcheck="false" placeholder="ask something, or type ls / cd ...">
+      </div>
+    </div>
+  </section>
+  <section id="guestbook">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">06</span><h2>guestbook --sign</h2></div>
+    <p class="sec-desc bf">Leave a message. Kept in memory for this page view only (nothing is sent anywhere, and it won't survive a refresh).</p>
+    <div class="gb-form bf">
+      <input type="text" id="gbName" class="gb-input gb-name" placeholder="handle / name" maxlength="30">
+      <input type="text" id="gbMsg" class="gb-input gb-msg" placeholder="leave a message..." maxlength="140">
+      <button class="btn btn-primary gb-submit" id="gbSubmit">sign →</button>
+    </div>
+    <div class="gb-list" id="gbList"></div>
+  </section>
+</main>
+
+<!-- FLOATING DOCK -->
+<div class="dock-wrap">
+  <nav class="dock" id="dock">
+    <button class="dock-item" data-href="index.html#about"><span class="dock-tooltip">about</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 19a6 6 0 0111 0"/></svg>
+    </button>
+    <button class="dock-item" data-href="index.html#projects"><span class="dock-tooltip">projects</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4.2l1.6 2H19a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+    </button>
+    <div class="dock-sep"></div>
+    <button class="dock-item" data-href="tools.html#tools"><span class="dock-tooltip">tools</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.65 2.65a1.4 1.4 0 01-2-2L14.7 6.3z"/></svg>
+    </button>
+    <button class="dock-item" data-href="games.html#games"><span class="dock-tooltip">games</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="10" rx="5"/><path d="M7 11v4M5 13h4"/><circle cx="15.5" cy="12" r="1"/><circle cx="18" cy="14.5" r="1"/></svg>
+    </button>
+    <div class="dock-sep"></div>
+    <button class="dock-item" data-href="#ctfs"><span class="dock-tooltip">ctf log</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h13l-2.5 3.5L18 11H5"/></svg>
+    </button>
+    <div class="dock-sep"></div>
+    <button class="dock-item" data-href="#"><span class="dock-tooltip">github</span>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.51-3.5-.7-3.72-1.34-.13-.34-.68-1.38-1.16-1.66-.4-.22-.97-.76-.01-.77.9-.01 1.54.85 1.76 1.2 1.03 1.75 2.67 1.26 3.32.96.1-.75.4-1.26.72-1.55-2.55-.29-5.23-1.31-5.23-5.79 0-1.28.44-2.32 1.16-3.14-.12-.29-.5-1.48.11-3.08 0 0 .95-.31 3.1 1.2a10.5 10.5 0 015.64 0c2.15-1.51 3.1-1.2 3.1-1.2.61 1.6.23 2.79.11 3.08.72.82 1.16 1.85 1.16 3.14 0 4.49-2.69 5.5-5.25 5.78.41.36.77 1.07.77 2.17 0 1.57-.01 2.83-.01 3.22 0 .28.18.61.69.5C19.14 20.6 22 16.76 22 12.25 22 6.58 17.52 2 12 2z"/></svg>
+    </button>
+    <button class="dock-item" data-href="#"><span class="dock-tooltip">x</span>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.4l8.2-9.4L1 2h7l4.9 6.1L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg>
+    </button>
+    <button class="dock-item" data-href="mailto:hello@schoolofsec.com"><span class="dock-tooltip">email</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l8.5 6a2.5 2.5 0 003 0L22 7"/></svg>
+    </button>
+  </nav>
+</div>
+
+<!-- MOBILE OFF-CANVAS MENU (takes over from the dock below 760px) -->
+<button class="menu-fab" id="menuFab" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+  <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+</button>
+<div class="mm-overlay" id="mmOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mm-handle"></div>
+  <div class="mm-head">
+    <span class="mm-title">menu</span>
+    <button class="mm-close" id="mmClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
+  </div>
+
+  <div class="mm-group">
+    <span class="mm-group-label">navigate</span>
+    <button class="mm-item" data-href="index.html#about">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 19a6 6 0 0111 0"/></svg></span>
+      about
+    </button>
+    <button class="mm-item" data-href="index.html#projects">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4.2l1.6 2H19a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg></span>
+      projects
+    </button>
+  </div>
+
+  <div class="mm-group">
+    <span class="mm-group-label">explore</span>
+    <button class="mm-item" data-href="tools.html#tools">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.65 2.65a1.4 1.4 0 01-2-2L14.7 6.3z"/></svg></span>
+      tools
+    </button>
+    <button class="mm-item" data-href="games.html#games">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="10" rx="5"/><path d="M7 11v4M5 13h4"/><circle cx="15.5" cy="12" r="1"/><circle cx="18" cy="14.5" r="1"/></svg></span>
+      games
+    </button>
+    <button class="mm-item" data-href="#ctfs">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h13l-2.5 3.5L18 11H5"/></svg></span>
+      ctf log
+    </button>
+  </div>
+
+  <div class="mm-group">
+    <span class="mm-group-label">connect</span>
+    <button class="mm-item" data-href="#">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.51-3.5-.7-3.72-1.34-.13-.34-.68-1.38-1.16-1.66-.4-.22-.97-.76-.01-.77.9-.01 1.54.85 1.76 1.2 1.03 1.75 2.67 1.26 3.32.96.1-.75.4-1.26.72-1.55-2.55-.29-5.23-1.31-5.23-5.79 0-1.28.44-2.32 1.16-3.14-.12-.29-.5-1.48.11-3.08 0 0 .95-.31 3.1 1.2a10.5 10.5 0 015.64 0c2.15-1.51 3.1-1.2 3.1-1.2.61 1.6.23 2.79.11 3.08.72.82 1.16 1.85 1.16 3.14 0 4.49-2.69 5.5-5.25 5.78.41.36.77 1.07.77 2.17 0 1.57-.01 2.83-.01 3.22 0 .28.18.61.69.5C19.14 20.6 22 16.76 22 12.25 22 6.58 17.52 2 12 2z"/></svg></span>
+      github
+    </button>
+    <button class="mm-item" data-href="#">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.4l8.2-9.4L1 2h7l4.9 6.1L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg></span>
+      x
+    </button>
+    <button class="mm-item" data-href="mailto:hello@schoolofsec.com">
+      <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l8.5 6a2.5 2.5 0 003 0L22 7"/></svg></span>
+      email
+    </button>
+  </div>
+</nav>
+
+<script src="js/matrix-rain.js"></script>
+<script src="js/clock-status.js"></script>
+<script src="js/scroll-effects.js"></script>
+<script src="js/nav-dock.js"></script>
+<script src="js/mobile-menu.js"></script>
+<script src="js/scrollspy.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/clipboard.js"></script>
+<script src="js/konami.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/tool-hash.js"></script>
+<script src="js/tool-cipher.js"></script>
+<script src="js/tool-password.js"></script>
+<script src="js/tool-subnet.js"></script>
+<script src="js/widget-github-stats.js"></script>
+<script src="js/flags-achievements.js"></script>
+<script src="js/cmdk.js"></script>
+<script src="js/guestbook.js"></script>
+<script src="js/theme-switcher.js"></script>
+<script src="js/crt-toggle.js"></script>
+<script src="js/holographic.js"></script>
+<script src="js/tilt-cards.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/tool-jwt.js"></script>
+<script src="js/tool-base64.js"></script>
+<script src="js/tool-hex.js"></script>
+<script src="js/tool-network.js"></script>
+<script src="js/widget-radar-chart.js"></script>
+<script src="js/widget-heatmap.js"></script>
+<script src="js/widget-sysmon.js"></script>
+<script src="js/audio-system.js"></script>
+<script src="js/hacker-typer.js"></script>
+<script src="js/ai-assistant.js"></script>
+<script src="js/game-typing.js"></script>
+<script src="js/game-memory.js"></script>
+<script src="js/greeting.js"></script>
+</body>
+</html>
