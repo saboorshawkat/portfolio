@@ -1,4 +1,4 @@
-  /* ---------- SECTION SHELL ---------- */
+/* ---------- SECTION SHELL ---------- */
   section{ padding:46px 0; border-bottom:1px solid var(--border-soft); }
   .sec-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:22px; }
   .sec-num{ font-size:11px; color:var(--text-faint); }
@@ -123,3 +123,13 @@
   }
   .pill::before{ content:'#'; color:var(--text-faint); }
   .pill:hover{ border-color:var(--green); color:var(--green); background:var(--green-bg); }
+
+  /* "currently learning" pill — dashed border + pulsing dot so it visibly
+     reads as in-progress rather than claiming mastery like the rest */
+  .pill-learning{ border-style:dashed; border-color:var(--border-soft); }
+  .pill-learning:hover{ border-style:dashed; }
+  .pill-dot{
+    width:6px; height:6px; border-radius:50%; background:var(--amber);
+    box-shadow:0 0 6px var(--amber); animation:pillPulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pillPulse{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
