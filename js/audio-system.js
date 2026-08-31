@@ -54,8 +54,12 @@
       }
       return ambientOn;
     }
-    function getAnalyser(){ ensureCtx(); return analyser; }
-    return { click, toggleTyping, toggleAmbient, getAnalyser, ensureCtx };
+        function getAnalyser(){ ensureCtx(); return analyser; }
+    // like getAnalyser, but never creates/resumes the AudioContext — the
+    // idle visualizer loop uses this so it can't trip Safari's autoplay
+    // lock before the user has actually clicked a toggle
+    function peekAnalyser(){ return ctx ? analyser : null; }
+    return { click, toggleTyping, toggleAmbient, getAnalyser, peekAnalyser, ensureCtx };
   })();
 
   (function wireAudioButtons(){
@@ -90,14 +94,15 @@
     window.addEventListener('resize', resize);
     function draw(){
       requestAnimationFrame(draw);
-      const analyser = AudioSys.getAnalyser ? null : null; // avoid creating ctx just for idle draw
       actx.clearRect(0,0,canvas.width,canvas.height);
+      const a = AudioSys.peekAnalyser();
       let data;
-      try{
-        const a = AudioSys.getAnalyser();
+      if(a){
         data = new Uint8Array(a.frequencyBinCount);
         a.getByteFrequencyData(data);
-      }catch(e){ data = new Uint8Array(32); }
+      } else {
+        data = new Uint8Array(32); // nothing on yet — draw a flat idle row
+      }
       const barW = canvas.width / data.length;
       const green = getComputedStyle(document.documentElement).getPropertyValue('--green').trim() || '#FF3B4E';
       actx.fillStyle = green;
