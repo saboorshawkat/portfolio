@@ -1,0 +1,85 @@
+  /* ---------- GITHUB STATS ---------- */
+  /* ---------- TOOLS ---------- */
+  .form-row{ margin-bottom:16px; }
+  .form-row label{
+    display:block; font-size:11px; color:var(--text-faint); text-transform:uppercase;
+    letter-spacing:.6px; margin-bottom:8px;
+  }
+  .form-row input[type="text"]{
+    width:100%; background:var(--surface); border:1px solid var(--border); border-radius:8px;
+    padding:12px 14px; color:var(--text); font-family:var(--mono); font-size:14px; outline:none;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .form-row input[type="text"]:focus{ border-color:var(--green); box-shadow:0 0 0 3px var(--green-bg); }
+  .form-row input[type="text"]::placeholder{ color:var(--text-faint); }
+  .tool-tabs{ display:flex; gap:8px; margin-bottom:20px; }
+  .tool-tab{
+    font-size:12px; padding:8px 14px; border-radius:7px; border:1px solid var(--border);
+    color:var(--text-dim); cursor:pointer; background:var(--surface); transition:.2s ease;
+  }
+  .tool-tab.active{ border-color:var(--green); color:var(--green); background:var(--green-bg); }
+  .tool-pane{ display:none; }
+  .tool-pane.active{ display:block; }
+  .hash-out{
+    display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--border);
+    border-radius:8px; padding:10px 14px; margin-top:10px; font-size:12.5px; overflow-x:auto;
+  }
+  .hash-label{ color:var(--text-faint); flex-shrink:0; width:70px; }
+  .hash-out code{ color:var(--green); word-break:break-all; }
+  .cipher-shift-row{ display:flex; align-items:center; gap:12px; }
+  .cipher-shift-row input[type="range"]{ flex:1; accent-color:var(--green); }
+  .cipher-shift-row span{ color:var(--green); width:20px; }
+  .pass-meter{ height:8px; border-radius:4px; background:var(--surface-2); overflow:hidden; margin:14px 0 8px; border:1px solid var(--border-soft); }
+  .pass-meter-fill{ height:100%; width:0%; background:var(--red); transition:width .3s ease, background .3s ease; }
+  .pass-verdict{ font-size:12.5px; color:var(--text-dim); }
+
+  /* ---------- PASSWORD FIELD ---------- */
+  .pass-field{
+    display:flex; align-items:center; gap:10px;
+    background:var(--surface); border:1px solid var(--border); border-radius:8px;
+    padding:0 14px; transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .pass-field:focus-within{ border-color:var(--green); box-shadow:0 0 0 3px var(--green-bg); }
+  .pass-icon{ width:16px; height:16px; color:var(--text-faint); flex-shrink:0; transition:color .2s ease; }
+  .pass-field:focus-within .pass-icon{ color:var(--green); }
+  .pass-field input{
+    flex:1; background:transparent; border:none; outline:none; padding:12px 0;
+    color:var(--text); font-family:var(--mono); font-size:14px; letter-spacing:1px;
+  }
+  .pass-field input::placeholder{ color:var(--text-faint); letter-spacing:normal; }
+  .pass-toggle{
+    background:none; border:none; padding:6px; margin:0 -4px; cursor:pointer;
+    color:var(--text-faint); display:flex; align-items:center; border-radius:6px; transition:color .15s ease, background .15s ease;
+  }
+  .pass-toggle:hover{ color:var(--green); background:var(--green-bg); }
+  .pass-toggle svg{ width:17px; height:17px; }
+  .pass-toggle .eye-closed{ display:none; }
+  .pass-toggle.showing .eye-open{ display:none; }
+  .pass-toggle.showing .eye-closed{ display:block; }
+  .pass-checklist{
+    display:grid; grid-template-columns:1fr 1fr; gap:8px 16px; margin-top:14px;
+  }
+  .pass-check{
+    display:flex; align-items:center; gap:8px; font-size:12px; color:var(--text-faint); transition:color .2s ease;
+  }
+  .pass-check-dot{
+    width:7px; height:7px; border-radius:50%; background:var(--text-faint); flex-shrink:0; transition:background .2s ease, box-shadow .2s ease;
+  }
+  .pass-check.met{ color:var(--text-dim); }
+  .pass-check.met .pass-check-dot{ background:var(--green); box-shadow:0 0 6px var(--green-glow); }
+
+  /* ================= TOOL EXTRA TABS reuse .tool-tab/.tool-pane ================= */
+  .kv-row{ display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--border-soft); font-size:12px; }
+  .kv-row:last-child{ border-bottom:none; }
+  .kv-key{ color:var(--text-faint); }
+  .kv-val{ color:var(--text); word-break:break-all; text-align:right; max-width:60%; }
+  textarea.term-input{
+    width:100%; background:var(--surface-2); border:1px solid var(--border); border-radius:8px;
+    padding:10px 12px; color:var(--text); font-family:var(--mono); font-size:12.5px; outline:none; resize:vertical;
+  }
+  .hex-grid{
+    font-family:var(--mono); font-size:11px; color:var(--text-dim); white-space:pre; overflow-x:auto;
+    background:var(--surface-2); border:1px solid var(--border); border-radius:8px; padding:10px; line-height:1.6;
+  }
+  .net-result{ margin-top:14px; }
+  .net-btn-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
