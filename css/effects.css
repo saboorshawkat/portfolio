@@ -1,4 +1,4 @@
-  /* ================= THEME OVERRIDES ================= */
+/* ================= THEME OVERRIDES ================= */
   [data-theme="cyan"]{ --green:#4FC3F7; --green-dim:#2E9BD6; --green-glow:rgba(79,195,247,0.35); --green-bg:#0B1F2A; --cyan:#FF7A45; --cyan-bg:#241207; }
   [data-theme="purple"]{ --green:#B983FF; --green-dim:#8A5CD6; --green-glow:rgba(185,131,255,0.35); --green-bg:#1E1229; --cyan:#6FE3C6; --cyan-bg:#0F231D; }
   [data-theme="amber"]{ --green:#E8B75B; --green-dim:#C4933A; --green-glow:rgba(232,183,91,0.35); --green-bg:#2A1F0E; --cyan:#7FD1E8; --cyan-bg:#0E2126; }
@@ -18,17 +18,8 @@
   .theme-dot[data-t="purple"]{ background:#B983FF; }
   .theme-dot[data-t="amber"]{ background:#E8B75B; }
 
-  /* ================= FX TOGGLE BUTTONS ================= */
-  .fx-controls{
-    position:fixed; right:20px; bottom:200px; z-index:50; display:flex; flex-direction:column; gap:8px;
-  }
-  .fx-btn{
-    width:36px; height:36px; border-radius:8px; border:1px solid var(--border); background:var(--surface);
-    color:var(--text-dim); font-family:var(--mono); font-size:14px; cursor:pointer; display:flex;
-    align-items:center; justify-content:center; transition:.2s ease;
-  }
-  .fx-btn:hover{ border-color:var(--green); color:var(--green); }
-  .fx-btn.active{ background:var(--green); color:#07090A; border-color:var(--green); }
+  /* (fx-btn/.fx-controls retired — crt + ambient audio toggles now live
+     in the top bar as .tb-audio buttons, see topbar-nav.css) */
 
   /* ================= CRT EFFECT ================= */
   body.crt-on .scanlines{ opacity:1; }
@@ -94,17 +85,6 @@
     background:var(--surface-2); color:var(--text-dim); cursor:pointer; transition:.2s ease; white-space:nowrap;
   }
   .audio-btn.active{ background:var(--green); color:#07090A; border-color:var(--green); }
-
-  /* ================= HACKER TYPER OVERLAY ================= */
-  #hackerTyperOverlay{
-    position:fixed; inset:0; z-index:200; background:#000; color:#3CFF6E; font-family:var(--mono);
-    font-size:13px; line-height:1.5; padding:30px; overflow:hidden; display:none; white-space:pre-wrap;
-    word-break:break-all;
-  }
-  #hackerTyperOverlay.active{ display:block; }
-  #hackerTyperOverlay .ht-hint{
-    position:fixed; bottom:16px; right:20px; color:#666; font-size:11px;
-  }
 
   /* ================= AI ASSISTANT bubble ================= */
   .ai-msg{ margin:6px 0; padding:8px 12px; border-radius:8px; font-size:12.5px; max-width:85%; }
