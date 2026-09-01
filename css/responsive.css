@@ -98,9 +98,6 @@
     -webkit-overflow-scrolling:touch;
   }
 
-  /* radar chart SVG has a fixed 280×280 viewBox — let it shrink to fit
-     narrow viewports instead of overflowing */
-  .radar-wrap svg{ width:100%; max-width:280px; height:auto; }
 
   .theme-switch{ right:10px; }
   .theme-dot{ width:26px; height:26px; }
