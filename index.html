@@ -35,10 +35,9 @@
 <div class="vignette"></div>
 <div class="scroll-bar" id="scrollBar"></div>
 <div class="toast" id="toast"></div>
-  
+
 <div class="fx-controls">
   <button class="fx-btn" id="crtToggle" title="Toggle CRT effect">crt</button>
-  <button class="fx-btn" id="audioAmbientToggle" title="Toggle ambient audio">♪</button>
 </div>
 <div class="theme-switch" id="themeSwitch">
   <div class="theme-dot active" data-t="green" title="green"></div>
@@ -79,6 +78,7 @@
     <div class="tb-right">
       <button class="tb-flags" id="tbFlags" title="Flags found">⚑ <span id="flagCount">0</span>/4</button>
       <button class="tb-cmdk" id="tbCmdk" title="Command palette">⌘K</button>
+      <button class="tb-audio" id="audioAmbientToggle" title="Toggle ambient audio">♪</button>
       <div class="tb-clock" id="clock">--:--:--</div>
     </div>
   </div>
@@ -140,9 +140,9 @@
         <span class="code-file">about.md</span>
       </div>
       <div class="code-body">
-        <p><span class="cmt">ORIGIN</span></p>
+        <p><span class="cmt"># origin story</span></p>
         <p>I Am A Computer Science Student Who Fell Down For Cybersecurity Rabbit Hole The Way Most Of Us Do. One <span class="str">pkg install</span> At A Time. What Started As Installing Random Tools In Termux Out Of Curiosity Turned Into A Genuine Obsession With <strong>Red Teaming And Penetration Testing</strong>: Understanding How Systems Break So I Can Help Defend Them Properly.</p>
-        <p><span class="cmt">WHAT I RUN?</span></p>
+        <p><span class="cmt"># what I run</span></p>
         <p><strong>School Of Sec</strong> Is The Notebook I Wish Existed When I Started — Clear, No-Fluff Install Guides For The Tools That Actually Matter, Built For People Learning Security From Their Phone Before They Ever Touch A Full Pentest Lab.</p>
       </div>
     </div>
@@ -195,21 +195,28 @@
       <div class="skill-cat">
         <div class="skill-cat-name">core</div>
         <div class="pill-wrap">
-          <span class="pill">NMAP</span><span class="pill">C</span><span class="pill">BASH</span>
-          <span class="pill">NETWORKING</span><span class="pill">LINUX</span>
+          <span class="pill">nmap</span><span class="pill">python</span><span class="pill">bash</span>
+          <span class="pill">networking</span><span class="pill">linux</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">offensive security</div>
+        <div class="pill-wrap">
+          <span class="pill">active-directory</span><span class="pill">owasp-top-10</span>
+          <span class="pill">privilege-escalation</span><span class="pill">web-exploitation</span>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-cat-name">tooling</div>
         <div class="pill-wrap">
-          <span class="pill">BURPSUITE</span><span class="pill">METASPLOIT</span>
-          <span class="pill">NMAP</span><span class="pill">TERMUX</span><span class="pill">ETTERCAP</span>
+          <span class="pill">burp-suite</span><span class="pill">metasploit</span>
+          <span class="pill">kali-linux</span><span class="pill">termux</span><span class="pill">wireshark</span>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-cat-name">currently learning</div>
         <div class="pill-wrap">
-          <span class="pill pill-learning">C-PROGRAMMING<span class="pill-dot"></span></span>
+          <span class="pill pill-learning">c<span class="pill-dot"></span></span>
         </div>
       </div>
     </div>
@@ -427,11 +434,11 @@
 <script src="js/tool-network.js"></script>
 <script src="js/widget-radar-chart.js"></script>
 <script src="js/widget-heatmap.js"></script>
-<script src="js/widget-sysmon.js"></script>
+<script src="js/widget-recon.js"></script>
 <script src="js/audio-system.js"></script>
 <script src="js/ai-assistant.js"></script>
-<script src="js/game-typing.js"></script>
-<script src="js/game-memory.js"></script>
+<script src="js/game-crack-code.js"></script>
+<script src="js/game-packet-sniff.js"></script>
 <script src="js/greeting.js"></script>
 </body>
 </html>
