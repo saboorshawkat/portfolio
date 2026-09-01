@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Games — Saboor Shawkat</title>
+<title>Saboor Shawkat — Security Researcher</title>
 <link rel="icon" type="image/png" href="assets/profile.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Lexend+Deca:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="css/variables.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/topbar-nav.css">
@@ -81,54 +83,259 @@
 </div>
 
 <main class="wrap">
-  <section id="games">
-    <div class="sec-head bf"><span class="sec-num sec-prompt">01</span><h2>GAMES</h2><span class="tag" style="margin-left:auto;">portfolio</span></div>
-    <p class="sec-desc bf">Two small breaks. Neither one is graded.</p>
-    <div class="game-grid bf">
+  <section class="hero">
+    <div class="hero-monitor bf">
+      <div class="hero-monitor-bar">
+        <span class="cdot r"></span><span class="cdot y"></span><span class="cdot g"></span>
+        <span class="hm-title">saboor@: ~/about-me</span>
+      </div>
+      <div class="hero-monitor-body">
+    <div class="boot-log">
+      <div>[<span class="ok">OK</span>] loading identity module...</div>
+      <div>[<span class="ok">OK</span>] mounting /home/saboor...</div>
+      <div>[<span class="ok">OK</span>] connection secure — access granted</div>
+    </div>
 
-      <div class="game-card">
-        <div class="skill-cat-name">crack the code</div>
-        <p class="game-sub">A 4-digit code, no repeated digits. Guess it in 8 tries. <span style="color:var(--green);">green</span> = right digit, right spot — <span style="color:var(--amber);">amber</span> = right digit, wrong spot.</p>
-        <div class="crack-guesses" id="crackGuesses"></div>
-        <div class="crack-input-row">
-          <input type="text" id="crackInput" class="term-input" maxlength="4" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="e.g. 4271">
-          <button type="button" class="btn btn-primary" id="crackSubmit">guess</button>
+    <div class="hero-avatar-wrap bf"><img class="hero-avatar" src="assets/profile.png"alt="Saboor Shawkat"></div>
+    <h1 class="hero-name bf"><span class="holo-text" id="holoName" data-text="Saboor">Saboor</span> <span class="glitch-accent holo-text" id="holoAccent" data-text="Shawkat">Shawkat</span></h1>
+    <div class="hero-role bf"><span class="prefix">$</span> whoami --role</div>
+    <p class="hero-desc bf">CS Undergraduate Specializing In <strong>Red Teaming &amp; Penetration Testing</strong>. Founder Of <strong>SchoolOfSec</strong> — A Mobile First Notebook Documenting The Tools That Actually Matter, Written For People Learning From Termux Before They Ever Touch A Full Lab.</p>
+
+    <div class="hero-actions bf">
+      <a href="#projects" class="btn btn-primary">./view-projects.sh</a>
+      <a href="#contact" class="btn btn-ghost">open-connection --contact</a>
+    </div>
+
+    <div class="hero-stats bf">
+      <div class="stat"><div class="stat-num">3+</div><div class="stat-label">yrs in the field</div></div>
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">guides shipped</div></div>
+      <div class="stat"><div class="stat-num">12</div><div class="stat-label">tools mastered</div></div>
+      <div class="stat"><div class="stat-num">root</div><div class="stat-label">access level</div></div>
+    </div>
+      </div>
+    </div>
+  </section>
+  <section id="terminal-section" style="padding-top:0;">
+    <div class="code-block bf" id="liveTerminal">
+      <div class="code-bar">
+        <span class="cdot r"></span><span class="cdot y"></span><span class="cdot g"></span>
+        <span class="code-file">interactive.sh — try typing <b style="color:var(--green)">help</b></span>
+      </div>
+      <div class="term-output" id="termOutput">
+        <div class="term-line term-muted">Type <span style="color:var(--green)">help</span> to see available commands.</div>
+      </div>
+      <div class="term-input-row">
+        <span class="term-prompt">guest@user:~$</span>
+        <input type="text" id="termInput" class="term-input" autocomplete="off" spellcheck="false" placeholder="type a command...">
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">01</span><h2>ABOUT</h2></div>
+    <div class="code-block bf">
+      <div class="code-bar">
+        <span class="cdot r"></span><span class="cdot y"></span><span class="cdot g"></span>
+        <span class="code-file">about.md</span>
+      </div>
+      <div class="code-body">
+        <p><span class="cmt"># origin story</span></p>
+        <p>I Am A Computer Science Student Who Fell Down For Cybersecurity Rabbit Hole The Way Most Of Us Do. One <span class="str">pkg install</span> At A Time. What Started As Installing Random Tools In Termux Out Of Curiosity Turned Into A Genuine Obsession With <strong>Red Teaming And Penetration Testing</strong>: Understanding How Systems Break So I Can Help Defend Them Properly.</p>
+        <p><span class="cmt"># what I run</span></p>
+        <p><strong>School Of Sec</strong> Is The Notebook I Wish Existed When I Started — Clear, No-Fluff Install Guides For The Tools That Actually Matter, Built For People Learning Security From Their Phone Before They Ever Touch A Full Pentest Lab.</p>
+      </div>
+    </div>
+  </section>
+  <section id="work">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">02</span><h2>EXPERIENCE</h2></div>
+    <div class="exp-grid bf">
+      <div class="exp-row">
+        <span class="exp-bracket">[+]</span>
+        <div class="exp-mid">
+          <div class="exp-title">School of Sec <span class="exp-status">active</span></div>
+          <div class="exp-role">Founder &amp; Writer</div>
         </div>
-        <div class="crack-meta">
-          <span>attempts: <b id="crackAttempts">0</b>/8</span>
-          <button type="button" class="btn btn-ghost" id="crackReset">new code</button>
+        <div class="exp-date">2024 — now</div>
+      </div>
+      <div class="exp-row">
+        <span class="exp-bracket">[+]</span>
+        <div class="exp-mid">
+          <div class="exp-title">Independent Study</div>
+          <div class="exp-role">Red Team &amp; Pentesting Labs</div>
+        </div>
+        <div class="exp-date">2023 — now</div>
+      </div>
+      <div class="exp-row">
+        <span class="exp-bracket">[+]</span>
+        <div class="exp-mid">
+          <div class="exp-title">Termux Tooling</div>
+          <div class="exp-role">Self-taught, mobile-first security lab</div>
+        </div>
+        <div class="exp-date">2022 — now</div>
+      </div>
+    </div>
+  </section>
+  <section id="education">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">03</span><h2>EDUCATIONS</h2></div>
+    <div class="bf">
+      <div class="edu-row">
+        <div><div class="edu-name">University — Computer Science</div><div class="edu-detail">Bachelor's Degree, in progress</div></div>
+        <div class="edu-date">2023 — 2027</div>
+      </div>
+      <div class="edu-row">
+        <div><div class="edu-name">TryHackMe / HackTheBox Academy</div><div class="edu-detail">Offensive security learning paths</div></div>
+        <div class="edu-date">2023 — now</div>
+      </div>
+    </div>
+  </section>
+  <section id="skills">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">04</span><h2>SKILLS</h2></div>
+    <p class="sec-desc bf">Depth over buzzwords — bar length is roughly how many hours are actually behind each one, not how good it'd look on a resume.</p>
+
+    <div class="skills-layout bf">
+      <div class="skills-panel">
+
+        <div class="skill-group">
+          <div class="skill-group-head">
+            <span class="skill-group-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></svg></span>
+            <span class="skill-group-name">LANGUAGES</span><span class="skill-group-note">daily drivers</span>
+          </div>
+          <div class="skill-row"><span class="skill-name">PYTHON</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:82%"></div></div><span class="skill-tier">advanced</span></div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-head">
+            <span class="skill-group-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.65 2.65a1.4 1.4 0 01-2-2L14.7 6.3z"/></svg></span>
+            <span class="skill-group-name">TOOLS</span><span class="skill-group-note">what's actually open most days</span>
+          </div>
+          <div class="skill-row"><span class="skill-name">METASPLOIT</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:80%"></div></div><span class="skill-tier">advanced</span></div>
+          <div class="skill-row"><span class="skill-name">NMAP</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:70%"></div></div><span class="skill-tier">solid</span></div>
+          <div class="skill-row"><span class="skill-name">TERMUX</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:65%"></div></div><span class="skill-tier">comfortable</span></div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-head">
+            <span class="skill-group-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+            <span class="skill-group-name">currently learning</span><span class="skill-group-note">honest about it, not padding the list</span>
+          </div>
+          <div class="skill-row learning"><span class="skill-name">C-LANGUAGE<span class="pill-dot"></span></span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:20%"></div></div><span class="skill-tier">early days</span></div>
+        </div>
+
+      </div>
+
+      <div class="skills-radar-card">
+        <div class="skills-radar-glow"></div>
+        <div class="skills-radar-head">
+          <span class="skill-cat-name">proficiency map</span>
+          <span class="skills-radar-note">self-rated, updated by hand</span>
+        </div>
+        <div id="skillsRadarWrap" class="skills-radar-wrap"></div>
+      </div>
+    </div>
+  </section>
+  <section id="projects">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">05</span><h2>PROJECTS</h2><span class="tag" style="margin-left:auto;">portfolio</span></div>
+    <p class="sec-desc bf">Selected work — swap in real repo links and case studies here.</p>
+    <div class="proj-list bf">
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-path">~/<span class="file">school-of-sec</span></span>
+          <span class="proj-status live">live</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">School of Sec</div>
+          <p class="proj-desc">Mobile-first learning notebook for security tooling — Termux install guides, breakdowns, and beginner-safe walkthroughs.</p>
+          <div class="proj-tags"><span class="tag">termux</span><span class="tag">docs</span><span class="tag">html/css</span></div>
+          <a class="proj-link" href="#">schoolofsec.com →</a>
         </div>
       </div>
 
-      <div class="game-card">
-        <div class="skill-cat-name">packet sniff</div>
-        <p class="game-sub">Click the <span style="color:var(--red);">malicious</span> packets before they slip past. Leave the safe ones alone — clicking those costs you.</p>
-        <div class="sniff-stats">
-          <div>score<b id="sniffScore">0</b></div>
-          <div>time<b id="sniffTime">30</b>s</div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-path">~/<span class="file">ctf-writeups</span></span>
+          <span class="proj-status live">public</span>
         </div>
-        <div class="sniff-lane" id="sniffLane"><div class="sniff-idle-msg" id="sniffIdleMsg">hit start to spin up traffic</div></div>
-        <button type="button" class="btn btn-ghost" id="sniffStart">start</button>
+        <div class="proj-body">
+          <div class="proj-name">CTF Write-ups Archive</div>
+          <p class="proj-desc">Personal collection of solved boxes and challenges, documented with full methodology instead of just answers.</p>
+          <div class="proj-tags"><span class="tag">tryhackme</span><span class="tag">hackthebox</span></div>
+          <a class="proj-link" href="#">github.com/saboorshawkat →</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-path">~/<span class="file">recon-automation</span></span>
+          <span class="proj-status wip">active</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Recon Automation Scripts</div>
+          <p class="proj-desc">Bash/Python scripts that chain enumeration tools together for faster initial recon on lab targets.</p>
+          <div class="proj-tags"><span class="tag">python</span><span class="tag">bash</span><span class="tag">nmap</span></div>
+          <div class="mitre-row"><span class="mitre-chip">T1595</span><span class="mitre-chip">T1046</span></div>
+          <a class="proj-link" href="#">view repo →</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-path">~/<span class="file">kali-field-notes</span></span>
+          <span class="proj-status wip">ongoing</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Kali Linux Field Notes</div>
+          <p class="proj-desc">A growing set of deeper red-team write-ups covering tools beyond the Termux basics.</p>
+          <div class="proj-tags"><span class="tag">kali</span><span class="tag">red-team</span></div>
+          <div class="mitre-row"><span class="mitre-chip">T1078</span><span class="mitre-chip">T1068</span><span class="mitre-chip">T1021</span></div>
+          <a class="proj-link" href="#">read the notes →</a>
+        </div>
       </div>
 
     </div>
   </section>
+  <section id="contact" style="border-bottom:none;">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">06</span><h2>CONTACT</h2></div>
+    <p class="sec-desc bf">Open A Secure Channel. Questions, Tool Requests Or Just Want To Talk Red Team.</p>
+    <div class="contact-block bf">
+      <div class="contact-card">
+        <div class="contact-label">email</div>
+        <a class="contact-value" href="mailto:saboorshawkat.sec@gmail.com">saboorshawkat.sec@gmail.com</a>
+        <button class="copy-btn" data-copy="hello@schoolofsec.com" title="Copy email">copy</button>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">github</div>
+        <a class="contact-value" href="https://github.com/saboorshawkat">@saboorshawkat</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">INSTAGRAM / </div>
+        <a class="contact-value" href="https://instagram.com/saboorshawkat/">@saboorshawkat</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">status</div>
+        <div class="contact-value" style="color:var(--green);">open to internships</div>
+      </div>
+    </div>
+  </section>
+  <footer class="bf">
+    <span class="green">saboor@</span>:~$ echo "connection closed" &amp;&amp; exit 0
+    <span class="sr-flag">FLAG{invisible_ink}</span>
+  </footer>
 </main>
 
 <!-- FLOATING DOCK -->
 <div class="dock-wrap">
   <nav class="dock" id="dock">
-    <button class="dock-item" data-href="index.html#about"><span class="dock-tooltip">about</span>
+    <button class="dock-item" data-href="#about"><span class="dock-tooltip">about</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 19a6 6 0 0111 0"/></svg>
     </button>
-    <button class="dock-item" data-href="index.html#projects"><span class="dock-tooltip">projects</span>
+    <button class="dock-item" data-href="#projects"><span class="dock-tooltip">projects</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4.2l1.6 2H19a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
     </button>
     <div class="dock-sep"></div>
     <button class="dock-item" data-href="tools.html#tools"><span class="dock-tooltip">tools</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.65 2.65a1.4 1.4 0 01-2-2L14.7 6.3z"/></svg>
     </button>
-    <button class="dock-item" data-href="#games"><span class="dock-tooltip">games</span>
+    <button class="dock-item" data-href="games.html#games"><span class="dock-tooltip">games</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="10" rx="5"/><path d="M7 11v4M5 13h4"/><circle cx="15.5" cy="12" r="1"/><circle cx="18" cy="14.5" r="1"/></svg>
     </button>
     <div class="dock-sep"></div>
@@ -165,11 +372,11 @@
 
   <div class="mm-group">
     <span class="mm-group-label">navigate</span>
-    <button class="mm-item" data-href="index.html#about">
+    <button class="mm-item" data-href="#about">
       <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 19a6 6 0 0111 0"/></svg></span>
       about
     </button>
-    <button class="mm-item" data-href="index.html#projects">
+    <button class="mm-item" data-href="#projects">
       <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4.2l1.6 2H19a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg></span>
       projects
     </button>
@@ -181,7 +388,7 @@
       <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.65 2.65a1.4 1.4 0 01-2-2L14.7 6.3z"/></svg></span>
       tools
     </button>
-    <button class="mm-item" data-href="#games">
+    <button class="mm-item" data-href="games.html#games">
       <span class="mm-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="10" rx="5"/><path d="M7 11v4M5 13h4"/><circle cx="15.5" cy="12" r="1"/><circle cx="18" cy="14.5" r="1"/></svg></span>
       games
     </button>
@@ -235,8 +442,8 @@
 <script src="js/tool-base64.js"></script>
 <script src="js/tool-hex.js"></script>
 <script src="js/tool-network.js"></script>
-<script src="js/widget-radar-chart.js"></script>
 <script src="js/widget-heatmap.js"></script>
+<script src="js/widget-radar-chart.js"></script>
 <script src="js/widget-recon.js"></script>
 <script src="js/audio-system.js"></script>
 <script src="js/ai-assistant.js"></script>
