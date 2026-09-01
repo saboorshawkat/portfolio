@@ -136,7 +136,7 @@
   .skill-group-name{ font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:1px; }
   .skill-group-note{ font-size:11px; color:var(--text-faint); opacity:.6; font-style:italic; }
 
-  /* ---------- SKILLS RADAR CARD ---------- */
+ /* ---------- SKILLS RADAR CARD ---------- */
   .skills-radar-card{
     position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
     padding:22px; overflow:hidden; display:flex; flex-direction:column; align-items:center; gap:6px;
@@ -173,10 +173,10 @@
     height:100%; border-radius:3px; background:linear-gradient(90deg, var(--green-dim), var(--green));
     box-shadow:0 0 8px -1px var(--green-glow); width:0; transition:width 1.1s cubic-bezier(.16,1,.3,1);
   }
-  /* .skills-panel carries both .bf (scroll-reveal) and, once visible, .in —
-     added by the existing IntersectionObserver in scroll-effects.js — so
-     the bars fill from 0 to their real width right as the section appears */
-  .skills-panel.in .skill-meter-fill{ width:var(--fill, 60%); }
+  /* the scroll-reveal "bf"/"in" pair now lives on .skills-layout (the
+     shared wrapper for both the bars and the radar card), so the fill
+     rule has to key off that instead of the old .skills-panel.in */
+  .skills-layout.in .skill-meter-fill{ width:var(--fill, 60%); }
   .skill-tier{ font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.4px; text-align:right; }
 
   /* "currently learning" row — dashed meter track + pulsing dot so it
