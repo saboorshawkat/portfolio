@@ -1,13 +1,6 @@
-// ---- Interactive terminal ----
-  // Only index.html has the hero boot-terminal (#termOutput/#termInput).
-  // This whole block used to run unguarded, so on every other page
-  // termInput was null and the very next line threw — which silently
-  // killed the rest of this script, including the tool-tab switching
-  // logic further down. That's why only the default "hash" tab worked
-  // on tools.html: the click listeners for the other tabs never attached.
+  // ---- Interactive terminal ----
   const termOutput = document.getElementById('termOutput');
   const termInput = document.getElementById('termInput');
-  if(termOutput && termInput){
   const termCommands = {
     help: `available commands:
   about      — who is saboor
@@ -67,16 +60,17 @@
     if(termCommands[cmd]){ printLine(termCommands[cmd]); return; }
     printLine(`command not found: ${cmd} — type 'help' for a list of commands.`, 'term-muted');
   }
-  termInput.addEventListener('keydown', (e) => {
-    if(e.key === 'Enter' && termInput.value.trim() !== ''){
-      runCommand(termInput.value);
-      termInput.value = '';
-    }
-  });
-  } // end if(termOutput && termInput)
+  if(termInput){
+    termInput.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' && termInput.value.trim() !== ''){
+        runCommand(termInput.value);
+        termInput.value = '';
+      }
+    });
+  }
 
   // ================= TOOLS =================
-  // -- tab switching -- (runs on every page regardless of the hero terminal above)
+  // -- tab switching --
   document.querySelectorAll('.tool-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
