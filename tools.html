@@ -33,12 +33,9 @@
 <div class="vignette"></div>
 <div class="scroll-bar" id="scrollBar"></div>
 <div class="toast" id="toast"></div>
-<div id="hackerTyperOverlay"><span id="htContent"></span><span class="ht-hint">press ESC to exit hacker-typer mode</span></div>
 
 <div class="fx-controls">
   <button class="fx-btn" id="crtToggle" title="Toggle CRT effect">crt</button>
-  <button class="fx-btn" id="audioAmbientToggle" title="Toggle ambient audio">♪</button>
-  <button class="fx-btn" id="hackerTyperToggle" title="Hacker-typer mode">ht</button>
 </div>
 <div class="theme-switch" id="themeSwitch">
   <div class="theme-dot active" data-t="green" title="green"></div>
@@ -79,6 +76,7 @@
     <div class="tb-right">
       <button class="tb-flags" id="tbFlags" title="Flags found">⚑ <span id="flagCount">0</span>/4</button>
       <button class="tb-cmdk" id="tbCmdk" title="Command palette">⌘K</button>
+      <button class="tb-audio" id="audioAmbientToggle" title="Toggle ambient audio">♪</button>
       <div class="tb-clock" id="clock">--:--:--</div>
     </div>
   </div>
@@ -317,12 +315,11 @@
 <script src="js/tool-network.js"></script>
 <script src="js/widget-radar-chart.js"></script>
 <script src="js/widget-heatmap.js"></script>
-<script src="js/widget-sysmon.js"></script>
+<script src="js/widget-recon.js"></script>
 <script src="js/audio-system.js"></script>
-<script src="js/hacker-typer.js"></script>
 <script src="js/ai-assistant.js"></script>
-<script src="js/game-typing.js"></script>
-<script src="js/game-memory.js"></script>
+<script src="js/game-crack-code.js"></script>
+<script src="js/game-packet-sniff.js"></script>
 <script src="js/greeting.js"></script>
 </body>
 </html>
