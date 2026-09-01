@@ -118,10 +118,48 @@
      skills section itself has moved on to .skill-group-name */
   .skill-cat-name{ font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
 
-  .skills-panel{ display:flex; flex-direction:column; gap:26px; }
+  .skills-layout{ display:grid; grid-template-columns:1.35fr 1fr; gap:28px; align-items:start; }
+  .skills-panel{ display:flex; flex-direction:column; gap:14px; }
+
+  .skill-group{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:16px 18px 10px; transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .skill-group:hover{ border-color:var(--border-soft); transform:translateY(-2px); box-shadow:0 10px 24px -14px rgba(0,0,0,.5); }
+
   .skill-group-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:12px; }
+  .skill-group-icon{
+    display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px;
+    color:var(--green); flex-shrink:0; align-self:center;
+  }
+  .skill-group-icon svg{ width:14px; height:14px; }
   .skill-group-name{ font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:1px; }
   .skill-group-note{ font-size:11px; color:var(--text-faint); opacity:.6; font-style:italic; }
+
+  /* ---------- SKILLS RADAR CARD ---------- */
+  .skills-radar-card{
+    position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px; overflow:hidden; display:flex; flex-direction:column; align-items:center; gap:6px;
+  }
+  .skills-radar-glow{
+    position:absolute; top:-40%; left:50%; transform:translateX(-50%); width:280px; height:280px;
+    background:radial-gradient(circle, var(--green-glow) 0%, transparent 70%); opacity:.35; pointer-events:none;
+  }
+  .skills-radar-head{ position:relative; text-align:center; margin-bottom:6px; }
+  .skills-radar-head .skill-cat-name{ margin-bottom:2px; }
+  .skills-radar-note{ display:block; font-size:10.5px; color:var(--text-faint); opacity:.7; font-style:italic; }
+  .skills-radar-wrap{ position:relative; display:flex; align-items:center; justify-content:center; width:100%; }
+  .skills-radar-wrap svg{ width:100%; height:auto; max-width:280px; filter:drop-shadow(0 0 14px var(--green-glow)); }
+  .skills-radar-wrap polygon[fill="var(--green)"]{ animation:radarPulse 3.2s ease-in-out infinite; }
+  @keyframes radarPulse{
+    0%, 100%{ fill-opacity:.18; }
+    50%{ fill-opacity:.3; }
+  }
+
+  @media (max-width:900px){
+    .skills-layout{ grid-template-columns:1fr; }
+    .skills-radar-card{ order:-1; }
+  }
 
   .skill-row{
     display:grid; grid-template-columns:34% 1fr 92px; align-items:center; gap:14px;
