@@ -33,12 +33,9 @@
 <div class="vignette"></div>
 <div class="scroll-bar" id="scrollBar"></div>
 <div class="toast" id="toast"></div>
-<div id="hackerTyperOverlay"><span id="htContent"></span><span class="ht-hint">press ESC to exit hacker-typer mode</span></div>
 
 <div class="fx-controls">
   <button class="fx-btn" id="crtToggle" title="Toggle CRT effect">crt</button>
-  <button class="fx-btn" id="audioAmbientToggle" title="Toggle ambient audio">♪</button>
-  <button class="fx-btn" id="hackerTyperToggle" title="Hacker-typer mode">ht</button>
 </div>
 <div class="theme-switch" id="themeSwitch">
   <div class="theme-dot active" data-t="green" title="green"></div>
@@ -79,6 +76,7 @@
     <div class="tb-right">
       <button class="tb-flags" id="tbFlags" title="Flags found">⚑ <span id="flagCount">0</span>/4</button>
       <button class="tb-cmdk" id="tbCmdk" title="Command palette">⌘K</button>
+      <button class="tb-audio" id="audioAmbientToggle" title="Toggle ambient audio">♪</button>
       <div class="tb-clock" id="clock">--:--:--</div>
     </div>
   </div>
@@ -184,29 +182,10 @@
       </div>
     </div>
   </section>
-  <section id="sysmon">
-    <div class="sec-head bf"><span class="sec-num sec-prompt">04</span><h2>sys --monitor</h2></div>
-    <p class="sec-desc bf">Simulated resource usage — random-walked, not pulled from anywhere real.</p>
-    <div class="sysmon-grid bf">
-      <div class="sysmon-card">
-        <div class="sysmon-label">cpu</div>
-        <div class="sysmon-val" id="sysCpuVal">—%</div>
-        <div class="sysmon-bar"><div class="sysmon-bar-fill" id="sysCpuBar" style="width:0%"></div></div>
-        <div class="sysmon-spark" id="sysCpuSpark"></div>
-      </div>
-      <div class="sysmon-card">
-        <div class="sysmon-label">memory</div>
-        <div class="sysmon-val" id="sysRamVal">—%</div>
-        <div class="sysmon-bar"><div class="sysmon-bar-fill" id="sysRamBar" style="width:0%"></div></div>
-        <div class="sysmon-spark" id="sysRamSpark"></div>
-      </div>
-      <div class="sysmon-card">
-        <div class="sysmon-label">network</div>
-        <div class="sysmon-val" id="sysNetVal">— KB/s</div>
-        <div class="sysmon-bar"><div class="sysmon-bar-fill" id="sysNetBar" style="width:0%"></div></div>
-        <div class="sysmon-spark" id="sysNetSpark"></div>
-      </div>
-    </div>
+  <section id="recon">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">04</span><h2>recon --target=you</h2></div>
+    <p class="sec-desc bf">Turnabout is fair play — here's what a passive recon pass picks up about <i>this</i> session. All real, all client-side, nothing sent anywhere or stored.</p>
+    <div class="recon-grid bf" id="reconGrid"></div>
     <div class="audio-panel bf" style="margin-top:20px;">
       <button type="button" class="audio-btn" id="typingSoundToggle">typing sounds: off</button>
       <canvas id="audioViz"></canvas>
@@ -363,12 +342,11 @@
 <script src="js/tool-network.js"></script>
 <script src="js/widget-radar-chart.js"></script>
 <script src="js/widget-heatmap.js"></script>
-<script src="js/widget-sysmon.js"></script>
+<script src="js/widget-recon.js"></script>
 <script src="js/audio-system.js"></script>
-<script src="js/hacker-typer.js"></script>
 <script src="js/ai-assistant.js"></script>
-<script src="js/game-typing.js"></script>
-<script src="js/game-memory.js"></script>
+<script src="js/game-crack-code.js"></script>
+<script src="js/game-packet-sniff.js"></script>
 <script src="js/greeting.js"></script>
 </body>
 </html>
