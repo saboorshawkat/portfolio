@@ -1,6 +1,13 @@
-  // ---- Interactive terminal ----
+// ---- Interactive terminal ----
+  // Only index.html has the hero boot-terminal (#termOutput/#termInput).
+  // This whole block used to run unguarded, so on every other page
+  // termInput was null and the very next line threw — which silently
+  // killed the rest of this script, including the tool-tab switching
+  // logic further down. That's why only the default "hash" tab worked
+  // on tools.html: the click listeners for the other tabs never attached.
   const termOutput = document.getElementById('termOutput');
   const termInput = document.getElementById('termInput');
+  if(termOutput && termInput){
   const termCommands = {
     help: `available commands:
   about      — who is saboor
@@ -66,9 +73,10 @@
       termInput.value = '';
     }
   });
+  } // end if(termOutput && termInput)
 
   // ================= TOOLS =================
-  // -- tab switching --
+  // -- tab switching -- (runs on every page regardless of the hero terminal above)
   document.querySelectorAll('.tool-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
