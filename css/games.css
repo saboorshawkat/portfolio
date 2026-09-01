@@ -1,0 +1,77 @@
+  /* ================= GAMES ================= */
+  .game-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px;
+  }
+  .game-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+  
+  .typing-target{
+    font-family:var(--mono); font-size:14px; line-height:1.8; color:var(--text-dim); padding:14px;
+    background:var(--surface-2); border-radius:8px; border:1px solid var(--border); margin:12px 0;
+  }
+  .typing-target .correct{ color:var(--green); }
+  .typing-target .wrong{ color:var(--red); text-decoration:underline; }
+  .typing-target .cursor-pos{ background:var(--green); color:#07090A; }
+  .typing-stats{ display:flex; gap:20px; font-size:12px; color:var(--text-faint); }
+  .typing-stats b{ color:var(--green); font-size:16px; display:block; }
+  .memory-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:12px; }
+  .mem-cell{
+    aspect-ratio:1; background:var(--surface-2); border:1px solid var(--border); border-radius:8px;
+    display:flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer;
+    transition:.2s ease; user-select:none;
+  }
+  .mem-cell.flipped, .mem-cell.matched{ background:var(--green-bg); border-color:var(--green); color:var(--green); }
+  .mem-cell.matched{ opacity:.5; cursor:default; }
+
+  /* ---------- CRACK THE CODE ---------- */
+  .game-sub{ font-size:12.5px; color:var(--text-dim); line-height:1.6; margin:2px 0 14px; }
+  .crack-guesses{
+    display:flex; flex-direction:column; gap:6px; max-height:210px; overflow-y:auto;
+    margin-bottom:6px; padding-right:2px;
+  }
+  .crack-guesses:empty{ display:none; }
+  .crack-guess-row{ display:flex; align-items:center; gap:10px; }
+  .crack-guess-code{ display:flex; gap:4px; }
+  .crack-digit{
+    width:24px; height:24px; border-radius:6px; background:var(--surface-2); border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:12.5px;
+    font-weight:700; color:var(--text);
+  }
+  .crack-guess-feedback{ display:flex; gap:4px; margin-left:auto; }
+  .crack-peg{ width:9px; height:9px; border-radius:50%; background:var(--muted); }
+  .crack-peg.hit{ background:var(--green); box-shadow:0 0 6px -1px var(--green-glow); }
+  .crack-peg.close{ background:var(--amber); box-shadow:0 0 6px -1px rgba(232,183,91,.5); }
+  .crack-result{
+    margin-bottom:10px; padding:10px 12px; border-radius:8px; font-size:12px; font-family:var(--mono);
+  }
+  .crack-result.win{ background:var(--green-bg); border:1px solid var(--green-dim); color:var(--green); }
+  .crack-result.lose{ background:rgba(255,59,78,.08); border:1px solid var(--red); color:var(--red); }
+  .crack-input-row{ display:flex; gap:8px; margin-top:4px; }
+  .crack-input-row .term-input{ flex:1; letter-spacing:3px; text-align:center; }
+  .crack-meta{
+    display:flex; align-items:center; justify-content:space-between; margin-top:12px;
+    font-size:11.5px; color:var(--text-faint);
+  }
+  .crack-meta b{ color:var(--text); }
+
+  /* ---------- PACKET SNIFF ---------- */
+  .sniff-stats{ display:flex; gap:24px; margin-bottom:10px; }
+  .sniff-stats div{ font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.5px; }
+  .sniff-stats b{ display:block; color:var(--green); font-size:19px; font-family:var(--mono); margin-top:2px; }
+  .sniff-lane{
+    position:relative; height:220px; background:var(--surface-2); border:1px solid var(--border);
+    border-radius:8px; overflow:hidden; margin-bottom:12px;
+  }
+  .sniff-idle-msg{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    color:var(--text-faint); font-size:12px; text-align:center; padding:20px; z-index:1;
+  }
+  .sniff-packet{
+    position:absolute; left:0; padding:6px 12px; border-radius:6px; font-family:var(--mono);
+    font-size:11px; white-space:nowrap; cursor:pointer; background:var(--surface);
+    border:1px solid var(--border); color:var(--text-dim); user-select:none;
+    transition:box-shadow .15s ease;
+  }
+  .sniff-packet:hover{ box-shadow:0 0 0 2px var(--border-soft) inset; }
+  .sniff-packet.malicious{ border-color:var(--red); color:var(--red); }
+  .sniff-packet.safe{ border-color:var(--green-dim); color:var(--text-dim); }
+  .sniff-packet.pop{ transform:scale(1.5); opacity:0; transition:transform .22s ease, opacity .22s ease; }

@@ -1,0 +1,118 @@
+/* ---------- TOP BAR ---------- */
+  .topbar{
+    padding:16px 0; border-bottom:1px solid var(--border-soft);
+    display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter:blur(10px);
+  }
+  .topbar-inner{ max-width:1320px; margin:0 auto; padding:0 48px; width:100%; display:flex; justify-content:space-between; align-items:center; }
+  .tb-user{ font-size:12.5px; color:var(--text-dim); display:flex; align-items:center; gap:8px; }
+  .tb-user .dot{ width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green-glow); animation:pulse 2s infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+  .tb-clock{ font-size:12px; color:var(--text-faint); }
+  .tb-right{ display:flex; align-items:center; gap:10px; }
+  .tb-flags, .tb-cmdk, .tb-audio{
+    font-family:var(--mono); font-size:11px; color:var(--text-dim); background:var(--surface);
+    border:1px solid var(--border); border-radius:6px; padding:5px 9px; cursor:pointer; transition:.15s ease;
+  }
+  .tb-flags:hover, .tb-cmdk:hover, .tb-audio:hover{ border-color:var(--green); color:var(--green); }
+  .tb-flags.complete{ border-color:var(--green); color:var(--green); background:var(--green-bg); }
+  .tb-audio.active{ border-color:var(--green); color:var(--green); background:var(--green-bg); box-shadow:0 0 10px -2px var(--green-glow); }
+
+  /* ---------- COMMAND PALETTE ---------- */
+  .cmdk-overlay{
+    position:fixed; inset:0; z-index:500; background:rgba(0,0,0,.6); backdrop-filter:blur(4px);
+    display:none; align-items:flex-start; justify-content:center; padding-top:12vh;
+  }
+  .cmdk-overlay.open{ display:flex; }
+  .cmdk-box{
+    width:min(560px, 90vw); background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.7); overflow:hidden;
+  }
+  .cmdk-input-row{ display:flex; align-items:center; gap:10px; padding:14px 16px; border-bottom:1px solid var(--border-soft); }
+  .cmdk-prompt{ color:var(--green); }
+  .cmdk-input{ flex:1; background:transparent; border:none; outline:none; color:var(--text); font-family:var(--mono); font-size:14px; }
+  .cmdk-esc{ font-size:10px; color:var(--text-faint); border:1px solid var(--border); padding:2px 6px; border-radius:4px; }
+  .cmdk-results{ max-height:340px; overflow-y:auto; padding:8px; }
+  .cmdk-item{
+    display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-radius:8px;
+    cursor:pointer; font-size:13px; color:var(--text-dim);
+  }
+  .cmdk-item.active{ background:var(--green-bg); color:var(--green); }
+  .cmdk-item .cmdk-key{ font-size:10.5px; color:var(--text-faint); }
+  .cmdk-item.active .cmdk-key{ color:var(--green-dim); }
+  .cmdk-empty{ padding:20px; text-align:center; color:var(--text-faint); font-size:12.5px; }
+
+  /* ---------- UNLOCK OVERLAY (all flags found) ---------- */
+  .unlock-overlay{
+    position:fixed; inset:0; z-index:600; background:rgba(5,2,2,.78); backdrop-filter:blur(6px);
+    display:none; align-items:center; justify-content:center; padding:24px;
+  }
+  .unlock-overlay.open{ display:flex; }
+  .unlock-box{
+    width:min(520px, 100%); background:var(--surface); border:1px solid var(--green-dim); border-radius:var(--radius);
+    padding:38px 34px 30px; text-align:center; position:relative; overflow:hidden;
+    box-shadow:0 40px 100px -20px rgba(0,0,0,.8), 0 0 60px -10px var(--green-glow);
+    animation:unlockIn .4s cubic-bezier(.2,.9,.3,1.2);
+  }
+  @keyframes unlockIn{ 0%{ opacity:0; transform:scale(.92) translateY(10px); } 100%{ opacity:1; transform:scale(1) translateY(0); } }
+  .unlock-box::before{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 0%, var(--green-glow), transparent 60%);
+    opacity:.5;
+  }
+  .unlock-flags{ font-size:22px; letter-spacing:8px; color:var(--green); text-shadow:0 0 16px var(--green-glow); margin-bottom:14px; position:relative; }
+  .unlock-eyebrow{
+    font-size:11px; color:var(--green); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:14px; position:relative;
+  }
+  .unlock-title{ font-size:19px; font-weight:700; color:var(--text); margin:0 0 14px; position:relative; }
+  .unlock-msg{ font-size:13.5px; color:var(--text-dim); line-height:1.7; margin:0 0 10px; position:relative; }
+  .unlock-sig{ font-size:12.5px; color:var(--text-faint); font-style:italic; margin-bottom:24px; position:relative; }
+  .unlock-actions{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; }
+
+  /* hidden flag - visually off-page but present in DOM */
+  .sr-flag{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+
+  .tb-logo{
+    width:26px; height:26px; border-radius:50%; object-fit:cover; flex-shrink:0;
+    border:1px solid var(--border); box-shadow:0 0 0 2px var(--bg), 0 0 10px -2px var(--green-glow);
+  }
+  .hero-avatar-wrap{ margin-bottom:22px; }
+  .hero-avatar{
+    width:96px; height:96px; border-radius:50%; object-fit:cover;
+    border:1px solid var(--border-soft); box-shadow:0 0 0 4px var(--surface), 0 0 28px -6px var(--green-glow);
+  }
+
+
+  /* ---------- FLOATING TERMINAL DOCK ---------- */
+  .dock-wrap{ position:fixed; bottom:20px; left:0; right:0; display:flex; justify-content:center; z-index:200; pointer-events:none; }
+  .dock{
+    pointer-events:auto; display:flex; align-items:center; gap:6px; padding:9px 14px; border-radius:999px;
+    background:color-mix(in srgb, var(--bg-soft) 80%, transparent); backdrop-filter:blur(14px);
+    border:1px solid var(--border); box-shadow:0 16px 44px -18px rgba(0,0,0,.7), 0 0 0 1px rgba(255,59,78,.05);
+  }
+  .dock-item{
+    width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    color:var(--text-dim); background:var(--surface-2); border:1px solid var(--border); cursor:pointer; position:relative;
+    transition:transform .15s cubic-bezier(.34,1.56,.64,1), color .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .dock-item:hover{
+    background:var(--green-bg); color:var(--green); border-color:var(--green-dim);
+    box-shadow:0 0 20px -4px var(--green-glow), inset 0 0 0 1px var(--green-dim);
+  }
+  .dock-item:active{ transform:scale(.92) !important; }
+  .dock-item svg{ width:19px; height:19px; filter:drop-shadow(0 0 0 transparent); transition:filter .15s ease; }
+  .dock-item:hover svg{ filter:drop-shadow(0 0 6px var(--green-glow)); }
+  .dock-sep{ width:1px; height:20px; background:var(--border); margin:0 5px; border-radius:1px; }
+  .dock-tooltip{
+    position:absolute; bottom:50px; left:50%; transform:translateX(-50%) translateY(4px);
+    background:var(--surface-2); color:var(--green); font-size:10.5px; padding:4px 10px; border-radius:999px;
+    white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .15s ease, transform .15s ease;
+    border:1px solid var(--border);
+  }
+  .dock-item:hover .dock-tooltip{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  
+  body{
+  background: linear-gradient(rgba(5,5,10,0.75), rgba(5,5,10,0.85)), url('bg.png') center/cover fixed no-repeat;
+}

@@ -1,0 +1,191 @@
+/* ---------- SECTION SHELL ---------- */
+  section{ padding:46px 0; border-bottom:1px solid var(--border-soft); }
+  .sec-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:22px; }
+  .sec-num{ font-size:11px; color:var(--text-faint); }
+  .sec-prompt{ color:var(--green); }
+  h2{ font-size:15px; font-weight:700; margin:0; color:var(--text); letter-spacing:.2px; }
+  h2::before{ content:'// '; color:var(--text-faint); font-weight:400; }
+  .sec-desc{ color:var(--text-dim); font-size:13px; max-width:520px; margin:-12px 0 22px; }
+
+  /* ---------- ABOUT terminal block ---------- */
+  .code-block{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .code-bar{ display:flex; align-items:center; gap:7px; padding:9px 13px; background:var(--surface-2); border-bottom:1px solid var(--border-soft); }
+  .cdot{ width:9px; height:9px; border-radius:50%; }
+  .cdot.r{ background:#5c4444; } .cdot.y{ background:#5c5644; } .cdot.g{ background:#3f5c47; }
+  .code-file{ font-size:11px; color:var(--text-faint); margin-left:6px; }
+  .code-body{ padding:20px 22px; font-size:13.5px; color:var(--text-dim); }
+  .code-body .cmt{ color:var(--text-faint); }
+  .code-body .str{ color:var(--amber); }
+  .code-body strong{ color:var(--text); font-weight:600; }
+  .code-body p{ margin:0 0 14px; }
+  .code-body p:last-child{ margin-bottom:0; }
+
+  /* ---------- METHODOLOGY / KILL CHAIN (horizontal) ---------- */
+  .kc-wrap{
+    position:relative; display:flex; gap:0; overflow-x:auto; padding:8px 4px 20px;
+    scrollbar-width:thin; scrollbar-color:var(--border) transparent;
+  }
+  .kc-wrap::-webkit-scrollbar{ height:6px; }
+  .kc-wrap::-webkit-scrollbar-thumb{ background:var(--border); border-radius:6px; }
+  .kc-track{
+    position:absolute; left:38px; right:38px; top:38px; height:1px;
+    background:linear-gradient(to right, var(--green-dim), var(--border) 90%);
+  }
+  .kc-stage{
+    position:relative; flex:1 0 220px; min-width:220px; max-width:260px;
+    padding:0 18px; border-right:1px solid var(--border-soft);
+    display:flex; flex-direction:column; align-items:flex-start;
+  }
+  .kc-stage:last-child{ border-right:none; }
+  .kc-num{
+    position:relative; width:40px; height:40px; border-radius:50%; margin-bottom:14px;
+    background:var(--surface); border:1px solid var(--green-dim); color:var(--green);
+    display:flex; align-items:center; justify-content:center; font-size:11.5px; font-weight:700; z-index:1;
+  }
+  .kc-icon{
+    display:flex; align-items:center; justify-content:center; width:34px; height:34px;
+    color:var(--cyan); margin-bottom:10px;
+  }
+  .kc-icon svg{ width:20px; height:20px; }
+  .kc-name{ font-size:14.5px; font-weight:700; color:var(--text); margin-bottom:6px; }
+  .kc-desc{ font-size:13px; color:var(--text-dim); max-width:100%; }
+  .kc-tag{
+    display:inline-block; margin-top:12px; font-size:10.5px; color:var(--text-faint);
+    border:1px solid var(--border); padding:2px 8px; border-radius:5px; white-space:nowrap;
+  }
+  
+
+  /* ---------- SUBNET CALCULATOR ---------- */
+  .subnet-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border-soft); border-radius:8px; overflow:hidden; margin-top:4px; }
+  .subnet-item{
+    background:var(--surface); padding:12px 16px; display:flex; flex-direction:column; gap:4px;
+  }
+  .subnet-k{ font-size:10px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.5px; }
+  .subnet-v{ font-size:13px; color:var(--green); font-family:var(--mono); word-break:break-word; }
+  
+
+  /* ---------- INTERACTIVE TERMINAL ---------- */
+  .term-output{
+    padding:16px 20px 4px; font-size:12.8px; max-height:220px; overflow-y:auto;
+    scrollbar-width:thin; scrollbar-color:var(--border) transparent;
+  }
+  .term-output::-webkit-scrollbar{ width:6px; }
+  .term-output::-webkit-scrollbar-thumb{ background:var(--border); border-radius:4px; }
+  .term-line{ margin-bottom:10px; color:var(--text-dim); white-space:pre-wrap; line-height:1.6; }
+  .term-line.term-muted{ color:var(--text-faint); }
+  .term-line.term-cmd{ color:var(--text); }
+  .term-line.term-cmd::before{ content:'guest@schoolofsec:~$ '; color:var(--green); }
+  .term-line.term-accent{ color:var(--green); }
+  .term-line a{ color:var(--cyan); }
+  .term-input-row{
+    display:flex; align-items:center; gap:10px; padding:12px 20px 18px; border-top:1px solid var(--border-soft);
+  }
+  .term-prompt{ color:var(--green); font-size:12.8px; flex-shrink:0; }
+  .term-input{
+    flex:1; background:transparent; border:none; outline:none; color:var(--text);
+    font-family:var(--mono); font-size:12.8px; caret-color:var(--green);
+  }
+  .term-input::placeholder{ color:var(--text-faint); }
+
+  /* ---------- EXPERIENCE (horizontal cards) ---------- */
+  .exp-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--border-soft); border-radius:8px; overflow:hidden; }
+  .exp-row{
+    display:flex; flex-direction:column; align-items:flex-start; gap:8px; padding:20px 18px;
+    background:var(--surface); transition:background .2s ease; border:1px solid transparent;
+  }
+  .exp-row:hover{ background:var(--surface-2); }
+  .exp-bracket{ font-size:12px; color:var(--green-dim); }
+  .exp-mid{ flex:1; min-width:0; }
+  .exp-title{ font-size:13.5px; font-weight:700; color:var(--text); }
+  .exp-role{ font-size:12.5px; color:var(--text-dim); margin-top:2px; }
+  .exp-date{ font-size:11.5px; color:var(--text-faint); white-space:nowrap; margin-top:auto; padding-top:10px; }
+  .exp-status{ font-size:10px; padding:2px 8px; border-radius:20px; background:var(--green-bg); color:var(--green); margin-left:8px; }
+  
+
+  /* ---------- EDUCATION ---------- */
+  .edu-row{ display:flex; justify-content:space-between; align-items:center; padding:12px 10px; margin:0 -10px; border-radius:8px; transition:.2s ease; border:1px solid transparent; }
+  .edu-row:hover{ background:var(--surface); border-color:var(--border-soft); }
+  .edu-name{ font-size:13.5px; font-weight:700; color:var(--text); }
+  .edu-detail{ font-size:12px; color:var(--text-dim); }
+  .edu-date{ font-size:11.5px; color:var(--text-faint); }
+
+  /* ---------- SKILLS ---------- */
+  /* .skill-cat-name is also reused as a generic small-uppercase-label
+     style on the game cards in games.css — keep it even though the
+     skills section itself has moved on to .skill-group-name */
+  .skill-cat-name{ font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+
+  .skills-layout{ display:grid; grid-template-columns:1.35fr 1fr; gap:28px; align-items:start; }
+  .skills-panel{ display:flex; flex-direction:column; gap:14px; }
+
+  .skill-group{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:16px 18px 10px; transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .skill-group:hover{ border-color:var(--border-soft); transform:translateY(-2px); box-shadow:0 10px 24px -14px rgba(0,0,0,.5); }
+
+  .skill-group-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:12px; }
+  .skill-group-icon{
+    display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px;
+    color:var(--green); flex-shrink:0; align-self:center;
+  }
+  .skill-group-icon svg{ width:14px; height:14px; }
+  .skill-group-name{ font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:1px; }
+  .skill-group-note{ font-size:11px; color:var(--text-faint); opacity:.6; font-style:italic; }
+
+ /* ---------- SKILLS RADAR CARD ---------- */
+  .skills-radar-card{
+    position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px; overflow:hidden; display:flex; flex-direction:column; align-items:center; gap:6px;
+  }
+  .skills-radar-glow{
+    position:absolute; top:-40%; left:50%; transform:translateX(-50%); width:280px; height:280px;
+    background:radial-gradient(circle, var(--green-glow) 0%, transparent 70%); opacity:.35; pointer-events:none;
+  }
+  .skills-radar-head{ position:relative; text-align:center; margin-bottom:6px; }
+  .skills-radar-head .skill-cat-name{ margin-bottom:2px; }
+  .skills-radar-note{ display:block; font-size:10.5px; color:var(--text-faint); opacity:.7; font-style:italic; }
+  .skills-radar-wrap{ position:relative; display:flex; align-items:center; justify-content:center; width:100%; }
+  .skills-radar-wrap svg{ width:100%; height:auto; max-width:280px; filter:drop-shadow(0 0 14px var(--green-glow)); }
+  .skills-radar-wrap polygon[fill="var(--green)"]{ animation:radarPulse 3.2s ease-in-out infinite; }
+  @keyframes radarPulse{
+    0%, 100%{ fill-opacity:.18; }
+    50%{ fill-opacity:.3; }
+  }
+
+  @media (max-width:900px){
+    .skills-layout{ grid-template-columns:1fr; }
+    .skills-radar-card{ order:-1; }
+  }
+
+  .skill-row{
+    display:grid; grid-template-columns:34% 1fr 92px; align-items:center; gap:14px;
+    padding:8px 10px; border-radius:8px; margin-bottom:4px; transition:background .15s ease;
+  }
+  .skill-row:hover{ background:var(--surface-2); }
+  .skill-name{ font-family:var(--mono); font-size:13px; color:var(--text-dim); display:flex; align-items:center; gap:8px; text-transform:uppercase; letter-spacing:.3px; }
+  .skill-row:hover .skill-name{ color:var(--text); }
+  .skill-meter{ height:6px; border-radius:3px; background:var(--muted); overflow:hidden; }
+  .skill-meter-fill{
+    height:100%; border-radius:3px; background:linear-gradient(90deg, var(--green-dim), var(--green));
+    box-shadow:0 0 8px -1px var(--green-glow); width:0; transition:width 1.1s cubic-bezier(.16,1,.3,1);
+  }
+  /* the scroll-reveal "bf"/"in" pair now lives on .skills-layout (the
+     shared wrapper for both the bars and the radar card), so the fill
+     rule has to key off that instead of the old .skills-panel.in */
+  .skills-layout.in .skill-meter-fill{ width:var(--fill, 60%); }
+  .skill-tier{ font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.4px; text-align:right; }
+
+  /* "currently learning" row — dashed meter track + pulsing dot so it
+     visibly reads as in-progress rather than claiming mastery like the rest */
+  .skill-row.learning .skill-meter{ background:transparent; border:1px dashed var(--border-soft); }
+  .skill-row.learning .skill-meter-fill{ background:linear-gradient(90deg, var(--amber), var(--amber)); box-shadow:0 0 8px -1px rgba(232,183,91,.5); }
+  .skill-row.learning .skill-tier{ color:var(--amber); }
+  .pill-dot{
+    width:6px; height:6px; border-radius:50%; background:var(--amber);
+    box-shadow:0 0 6px var(--amber); animation:pillPulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pillPulse{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }

@@ -1,0 +1,15 @@
+/* ================= HEATMAP ================= */
+  .heatmap-grid{ display:grid; grid-template-columns:repeat(26,1fr); gap:3px; margin-top:14px; }
+  .heat-cell{ aspect-ratio:1; border-radius:2px; background:var(--surface-2); }
+  .heatmap-legend{ display:flex; align-items:center; gap:6px; margin-top:10px; font-size:10.5px; color:var(--text-faint); }
+  .heatmap-legend .heat-cell{ width:11px; height:11px; aspect-ratio:unset; }
+
+  /* ================= RECON PANEL (real client-side session facts) ================= */
+  .recon-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:12px; }
+  .recon-card{
+    background:var(--surface-2); border:1px solid var(--border); border-radius:8px; padding:12px 14px;
+    transition:border-color .15s ease;
+  }
+  .recon-card:hover{ border-color:var(--green-dim); }
+  .recon-label{ font-size:10px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.6px; margin-bottom:6px; }
+  .recon-val{ font-size:14px; font-weight:600; color:var(--green); font-family:var(--mono); word-break:break-word; }
