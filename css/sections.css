@@ -128,7 +128,7 @@
     padding:8px 10px; border-radius:8px; margin-bottom:4px; transition:background .15s ease;
   }
   .skill-row:hover{ background:var(--surface-2); }
-  .skill-name{ font-family:var(--mono); font-size:13px; color:var(--text-dim); display:flex; align-items:center; gap:8px; }
+  .skill-name{ font-family:var(--mono); font-size:13px; color:var(--text-dim); display:flex; align-items:center; gap:8px; text-transform:uppercase; letter-spacing:.3px; }
   .skill-row:hover .skill-name{ color:var(--text); }
   .skill-meter{ height:6px; border-radius:3px; background:var(--muted); overflow:hidden; }
   .skill-meter-fill{
