@@ -36,9 +36,6 @@
 <div class="scroll-bar" id="scrollBar"></div>
 <div class="toast" id="toast"></div>
 
-<div class="fx-controls">
-  <button class="fx-btn" id="crtToggle" title="Toggle CRT effect">crt</button>
-</div>
 <div class="theme-switch" id="themeSwitch">
   <div class="theme-dot active" data-t="green" title="green"></div>
   <div class="theme-dot" data-t="cyan" title="cyan"></div>
@@ -78,6 +75,7 @@
     <div class="tb-right">
       <button class="tb-flags" id="tbFlags" title="Flags found">⚑ <span id="flagCount">0</span>/4</button>
       <button class="tb-cmdk" id="tbCmdk" title="Command palette">⌘K</button>
+      <button class="tb-audio" id="crtToggle" title="Toggle CRT effect">crt</button>
       <button class="tb-audio" id="audioAmbientToggle" title="Toggle ambient audio">♪</button>
       <div class="tb-clock" id="clock">--:--:--</div>
     </div>
@@ -191,34 +189,40 @@
   </section>
   <section id="skills">
     <div class="sec-head bf"><span class="sec-num sec-prompt">04</span><h2>SKILLS</h2></div>
-    <div class="bf">
-      <div class="skill-cat">
-        <div class="skill-cat-name">core</div>
-        <div class="pill-wrap">
-          <span class="pill">nmap</span><span class="pill">python</span><span class="pill">bash</span>
-          <span class="pill">networking</span><span class="pill">linux</span>
-        </div>
+    <p class="sec-desc bf">Depth over buzzwords — bar length is roughly how many hours are actually behind each one, not how good it'd look on a resume.</p>
+    <div class="skills-panel bf">
+
+      <div class="skill-group">
+        <div class="skill-group-head"><span class="skill-group-name">core</span><span class="skill-group-note">daily drivers</span></div>
+        <div class="skill-row"><span class="skill-name">python</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:82%"></div></div><span class="skill-tier">advanced</span></div>
+        <div class="skill-row"><span class="skill-name">linux</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:85%"></div></div><span class="skill-tier">advanced</span></div>
+        <div class="skill-row"><span class="skill-name">networking</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:75%"></div></div><span class="skill-tier">solid</span></div>
+        <div class="skill-row"><span class="skill-name">bash</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:70%"></div></div><span class="skill-tier">solid</span></div>
+        <div class="skill-row"><span class="skill-name">nmap</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:78%"></div></div><span class="skill-tier">solid</span></div>
       </div>
-      <div class="skill-cat">
-        <div class="skill-cat-name">offensive security</div>
-        <div class="pill-wrap">
-          <span class="pill">active-directory</span><span class="pill">owasp-top-10</span>
-          <span class="pill">privilege-escalation</span><span class="pill">web-exploitation</span>
-        </div>
+
+      <div class="skill-group">
+        <div class="skill-group-head"><span class="skill-group-name">offensive security</span><span class="skill-group-note">where the CTF hours go</span></div>
+        <div class="skill-row"><span class="skill-name">privilege escalation</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:65%"></div></div><span class="skill-tier">comfortable</span></div>
+        <div class="skill-row"><span class="skill-name">web exploitation</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:60%"></div></div><span class="skill-tier">comfortable</span></div>
+        <div class="skill-row"><span class="skill-name">OWASP top 10</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:68%"></div></div><span class="skill-tier">comfortable</span></div>
+        <div class="skill-row"><span class="skill-name">active directory</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:50%"></div></div><span class="skill-tier">building up</span></div>
       </div>
-      <div class="skill-cat">
-        <div class="skill-cat-name">tooling</div>
-        <div class="pill-wrap">
-          <span class="pill">burp-suite</span><span class="pill">metasploit</span>
-          <span class="pill">kali-linux</span><span class="pill">termux</span><span class="pill">wireshark</span>
-        </div>
+
+      <div class="skill-group">
+        <div class="skill-group-head"><span class="skill-group-name">tooling</span><span class="skill-group-note">what's actually open most days</span></div>
+        <div class="skill-row"><span class="skill-name">kali linux</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:80%"></div></div><span class="skill-tier">advanced</span></div>
+        <div class="skill-row"><span class="skill-name">burp suite</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:70%"></div></div><span class="skill-tier">solid</span></div>
+        <div class="skill-row"><span class="skill-name">wireshark</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:65%"></div></div><span class="skill-tier">comfortable</span></div>
+        <div class="skill-row"><span class="skill-name">metasploit</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:58%"></div></div><span class="skill-tier">comfortable</span></div>
+        <div class="skill-row"><span class="skill-name">termux</span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:72%"></div></div><span class="skill-tier">solid</span></div>
       </div>
-      <div class="skill-cat">
-        <div class="skill-cat-name">currently learning</div>
-        <div class="pill-wrap">
-          <span class="pill pill-learning">c<span class="pill-dot"></span></span>
-        </div>
+
+      <div class="skill-group">
+        <div class="skill-group-head"><span class="skill-group-name">currently learning</span><span class="skill-group-note">honest about it, not padding the list</span></div>
+        <div class="skill-row learning"><span class="skill-name">c<span class="pill-dot"></span></span><div class="skill-meter"><div class="skill-meter-fill" style="--fill:20%"></div></div><span class="skill-tier">early days</span></div>
       </div>
+
     </div>
     <div class="radar-wrap bf" id="skillsRadarWrap"></div>
   </section>
