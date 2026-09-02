@@ -17,6 +17,12 @@
     --cyan-bg:#101823;
     --amber:#E8B75B;
     --red:#FF7A45;
+    /* --green above is actually the site's red accent (legacy name from
+       before the theme changed) — anything that needs a genuine, literal
+       green (like exact-match feedback in the games) should use this
+       instead, so "green" in copy actually renders green */
+    --true-green:#3ECF6E;
+    --true-green-glow:rgba(62,207,110,0.4);
     --mono:'Lexend Deca', sans-serif;
     --mono2:'Lexend Deca', sans-serif;
     --display:'Lexend Deca', sans-serif;
