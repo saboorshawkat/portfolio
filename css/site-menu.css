@@ -1,9 +1,12 @@
 /* ==========================================================================
    MOBILE NAV MENU
    Below 760px the same floating dock used on desktop straightens out into
-   a full-width bar pinned to the bottom edge of the screen — same items,
-   same links, same scrollspy highlighting, just laid out edge-to-edge for
-   touch instead of a centered floating pill.
+   a full-length bar pinned near the bottom of the screen — same items,
+   same links, same scrollspy highlighting, just stretched edge-to-edge
+   with a small side inset (instead of a small centered pill) so it still
+   reads as a floating dock rather than a flush, bare strip. Rounded
+   corners all around and the theme's border/glow keep it visually
+   consistent with the desktop dock.
 
    The site used to hand off to a hamburger button + off-canvas panel on
    mobile; that whole pattern is retired now that the dock covers mobile
@@ -16,15 +19,18 @@
 
 /* ---------- breakpoint handoff ---------- */
 @media (max-width:760px){
-  /* the desktop dock straightens into a full-length bottom bar: same
-     nav element, same items/links/icons (and scrollspy highlighting),
-     just spans edge-to-edge and sits flush with the screen bottom
-     instead of floating as a centered pill. */
-  .dock-wrap{ bottom:0; padding:0; }
+  /* the desktop dock stretches into a near-full-length bar: same nav
+     element, same items/links/icons (and scrollspy highlighting), just
+     wider — kept inset from the screen edges and fully rounded so it
+     still floats like a dock instead of docking flush to the sides. */
+  .dock-wrap{ bottom:14px; padding:0 12px; }
   .dock{
-    width:100%; justify-content:space-between; border-radius:0;
-    border-left:none; border-right:none; border-bottom:none;
-    padding:8px 10px calc(env(safe-area-inset-bottom, 0px) + 8px);
+    width:100%; justify-content:space-between;
+    border-radius:calc(var(--radius) * 2);
+    border-color:var(--border);
+    padding:10px 14px;
+    padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 10px);
+    box-shadow:0 16px 44px -18px rgba(0,0,0,.7), 0 0 0 1px rgba(255,59,78,.05);
   }
   .dock-sep{ display:none; } /* no room for separators once it's a full row */
 }
