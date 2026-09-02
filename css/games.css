@@ -1,4 +1,4 @@
-  /* ================= GAMES ================= */
+/* ================= GAMES ================= */
   .game-card{
     background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px;
   }
@@ -20,7 +20,7 @@
   }
   .crack-guess-feedback{ display:flex; gap:4px; margin-left:auto; }
   .crack-peg{ width:9px; height:9px; border-radius:50%; background:var(--muted); }
-  .crack-peg.hit{ background:var(--green); box-shadow:0 0 6px -1px var(--green-glow); }
+  .crack-peg.hit{ background:var(--true-green); box-shadow:0 0 6px -1px var(--true-green-glow); }
   .crack-peg.close{ background:var(--amber); box-shadow:0 0 6px -1px rgba(232,183,91,.5); }
   .crack-result{
     margin-bottom:10px; padding:10px 12px; border-radius:8px; font-size:12px; font-family:var(--mono);
