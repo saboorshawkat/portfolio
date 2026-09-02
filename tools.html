@@ -35,10 +35,15 @@
 <div class="toast" id="toast"></div>
 
 <div class="theme-switch" id="themeSwitch">
-  <div class="theme-dot active" data-t="green" title="green"></div>
-  <div class="theme-dot" data-t="cyan" title="cyan"></div>
-  <div class="theme-dot" data-t="purple" title="purple"></div>
-  <div class="theme-dot" data-t="amber" title="amber"></div>
+  <button type="button" class="theme-toggle" id="themeToggle" title="Colour theme" aria-expanded="false" aria-controls="themeDots">
+    <span class="theme-toggle-swatch"></span>
+  </button>
+  <div class="theme-dots" id="themeDots">
+    <div class="theme-dot active" data-t="green" title="green"></div>
+    <div class="theme-dot" data-t="cyan" title="cyan"></div>
+    <div class="theme-dot" data-t="purple" title="purple"></div>
+    <div class="theme-dot" data-t="amber" title="amber"></div>
+  </div>
 </div>
 
 <div class="cmdk-overlay" id="cmdkOverlay">
@@ -69,6 +74,10 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-inner">
+    <button class="tb-hamburger" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
     <div class="tb-user"><img class="tb-logo" src="assets/profile.png" alt="Saboor Shawkat"><span class="dot"></span> saboor@:~$ <span id="typeStatus"></span></div>
     <div class="tb-right">
       <button class="tb-flags" id="tbFlags" title="Flags found">⚑ <span id="flagCount">0</span>/4</button>
@@ -224,14 +233,9 @@
   </nav>
 </div>
 
-<!-- MOBILE OFF-CANVAS MENU (takes over from the dock below 760px) -->
-<button class="menu-fab" id="menuFab" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-  <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
-  <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
-</button>
+<!-- MOBILE NAV DRAWER (hamburger button lives in the top bar, takes over from the dock below 760px) -->
 <div class="mm-overlay" id="mmOverlay"></div>
 <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <div class="mm-handle"></div>
   <div class="mm-head">
     <span class="mm-title">menu</span>
     <button class="mm-close" id="mmClose" aria-label="Close menu">
