@@ -37,10 +37,15 @@
 <div class="toast" id="toast"></div>
 
 <div class="theme-switch" id="themeSwitch">
-  <div class="theme-dot active" data-t="green" title="green"></div>
-  <div class="theme-dot" data-t="cyan" title="cyan"></div>
-  <div class="theme-dot" data-t="purple" title="purple"></div>
-  <div class="theme-dot" data-t="amber" title="amber"></div>
+  <button type="button" class="theme-toggle" id="themeToggle" title="Colour theme" aria-expanded="false" aria-controls="themeDots">
+    <span class="theme-toggle-swatch"></span>
+  </button>
+  <div class="theme-dots" id="themeDots">
+    <div class="theme-dot active" data-t="green" title="green"></div>
+    <div class="theme-dot" data-t="cyan" title="cyan"></div>
+    <div class="theme-dot" data-t="purple" title="purple"></div>
+    <div class="theme-dot" data-t="amber" title="amber"></div>
+  </div>
 </div>
 
 <div class="cmdk-overlay" id="cmdkOverlay">
@@ -71,6 +76,10 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-inner">
+    <button class="tb-hamburger" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
     <div class="tb-user"><img class="tb-logo" src="assets/profile.png" alt="Saboor Shawkat"><span class="dot"></span> saboor@:~$ <span id="typeStatus"></span></div>
     <div class="tb-right">
       <button class="tb-flags" id="tbFlags" title="Flags found">⚑ <span id="flagCount">0</span>/4</button>
@@ -97,7 +106,7 @@
     </div>
 
     <div class="hero-avatar-wrap bf"><img class="hero-avatar" src="assets/profile.png"alt="Saboor Shawkat"></div>
-    <h1 class="hero-name bf"><span class="glitch-accent holo-text" id="holoAccent" data-text="Saboor">Saboor</span> <span class="holo-text" id="holoName" data-text="Shawkat">Shawkat</span></h1>
+    <h1 class="hero-name bf"><span class="holo-text" id="holoName" data-text="Saboor">Saboor</span> <span class="glitch-accent holo-text" id="holoAccent" data-text="Shawkat">Shawkat</span></h1>
     <div class="hero-role bf"><span class="prefix">$</span> whoami --role</div>
     <p class="hero-desc bf">CS Undergraduate Specializing In <strong>Red Teaming &amp; Penetration Testing</strong>. Founder Of <strong>SchoolOfSec</strong> — A Mobile First Notebook Documenting The Tools That Actually Matter, Written For People Learning From Termux Before They Ever Touch A Full Lab.</p>
 
@@ -145,51 +154,9 @@
       </div>
     </div>
   </section>
-  <section id="work">
-    <div class="sec-head bf"><span class="sec-num sec-prompt">02</span><h2>EXPERIENCE</h2></div>
-    <div class="exp-grid bf">
-      <div class="exp-row">
-        <span class="exp-bracket">[+]</span>
-        <div class="exp-mid">
-          <div class="exp-title">School of Sec <span class="exp-status">active</span></div>
-          <div class="exp-role">Founder &amp; Writer</div>
-        </div>
-        <div class="exp-date">2024 — now</div>
-      </div>
-      <div class="exp-row">
-        <span class="exp-bracket">[+]</span>
-        <div class="exp-mid">
-          <div class="exp-title">Independent Study</div>
-          <div class="exp-role">Red Team &amp; Pentesting Labs</div>
-        </div>
-        <div class="exp-date">2023 — now</div>
-      </div>
-      <div class="exp-row">
-        <span class="exp-bracket">[+]</span>
-        <div class="exp-mid">
-          <div class="exp-title">Termux Tooling</div>
-          <div class="exp-role">Self-taught, mobile-first security lab</div>
-        </div>
-        <div class="exp-date">2022 — now</div>
-      </div>
-    </div>
-  </section>
-  <section id="education">
-    <div class="sec-head bf"><span class="sec-num sec-prompt">03</span><h2>EDUCATIONS</h2></div>
-    <div class="bf">
-      <div class="edu-row">
-        <div><div class="edu-name">University — Computer Science</div><div class="edu-detail">Bachelor's Degree, in progress</div></div>
-        <div class="edu-date">2023 — 2027</div>
-      </div>
-      <div class="edu-row">
-        <div><div class="edu-name">TryHackMe / HackTheBox Academy</div><div class="edu-detail">Offensive security learning paths</div></div>
-        <div class="edu-date">2023 — now</div>
-      </div>
-    </div>
-  </section>
   <section id="skills">
-    <div class="sec-head bf"><span class="sec-num sec-prompt">04</span><h2>SKILLS</h2></div>
-    <p class="sec-desc bf">Depth over buzzwords — bar length is roughly how many hours are actually behind each one, not how good it'd look on a resume.</p>
+    <div class="sec-head bf"><span class="sec-num sec-prompt">02</span><h2>SKILLS</h2></div>
+    <p class="sec-desc bf">What I can actually do, not just what I've heard of — bar length is roughly how many hours are behind each one, not how good it'd look on a resume.</p>
 
     <div class="skills-layout bf">
       <div class="skills-panel">
@@ -229,6 +196,48 @@
           <span class="skills-radar-note">self-rated, updated by hand</span>
         </div>
         <div id="skillsRadarWrap" class="skills-radar-wrap"></div>
+      </div>
+    </div>
+  </section>
+  <section id="work">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">03</span><h2>EXPERIENCE</h2></div>
+    <div class="exp-grid bf">
+      <div class="exp-row">
+        <span class="exp-bracket">[+]</span>
+        <div class="exp-mid">
+          <div class="exp-title">School of Sec <span class="exp-status">active</span></div>
+          <div class="exp-role">Founder &amp; Writer</div>
+        </div>
+        <div class="exp-date">2024 — now</div>
+      </div>
+      <div class="exp-row">
+        <span class="exp-bracket">[+]</span>
+        <div class="exp-mid">
+          <div class="exp-title">Independent Study</div>
+          <div class="exp-role">Red Team &amp; Pentesting Labs</div>
+        </div>
+        <div class="exp-date">2023 — now</div>
+      </div>
+      <div class="exp-row">
+        <span class="exp-bracket">[+]</span>
+        <div class="exp-mid">
+          <div class="exp-title">Termux Tooling</div>
+          <div class="exp-role">Self-taught, mobile-first security lab</div>
+        </div>
+        <div class="exp-date">2022 — now</div>
+      </div>
+    </div>
+  </section>
+  <section id="education">
+    <div class="sec-head bf"><span class="sec-num sec-prompt">04</span><h2>EDUCATIONS</h2></div>
+    <div class="bf">
+      <div class="edu-row">
+        <div><div class="edu-name">University — Computer Science</div><div class="edu-detail">Bachelor's Degree, in progress</div></div>
+        <div class="edu-date">2023 — 2027</div>
+      </div>
+      <div class="edu-row">
+        <div><div class="edu-name">TryHackMe / HackTheBox Academy</div><div class="edu-detail">Offensive security learning paths</div></div>
+        <div class="edu-date">2023 — now</div>
       </div>
     </div>
   </section>
@@ -355,14 +364,9 @@
   </nav>
 </div>
 
-<!-- MOBILE OFF-CANVAS MENU (takes over from the dock below 760px) -->
-<button class="menu-fab" id="menuFab" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-  <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
-  <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
-</button>
+<!-- MOBILE NAV DRAWER (hamburger button lives in the top bar, takes over from the dock below 760px) -->
 <div class="mm-overlay" id="mmOverlay"></div>
 <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <div class="mm-handle"></div>
   <div class="mm-head">
     <span class="mm-title">menu</span>
     <button class="mm-close" id="mmClose" aria-label="Close menu">
