@@ -1,0 +1,77 @@
+/* ==========================================================================
+   MOBILE NAV MENU
+   Below 760px the floating dock hands off to a hamburger button in the top
+   bar, which slides in a side drawer — the previous version used a floating
+   fab + bottom sheet; this replaces that with a more conventional pattern.
+   Hidden entirely above the breakpoint — the dock stays in charge there.
+   ========================================================================== */
+
+/* ---------- hamburger trigger (lives in the top bar) ---------- */
+.tb-hamburger{
+  display:none; align-items:center; justify-content:center; width:30px; height:30px;
+  border-radius:6px; border:1px solid var(--border); background:var(--surface);
+  color:var(--text-dim); cursor:pointer; padding:0; flex:none; transition:.15s ease;
+}
+.tb-hamburger:hover{ border-color:var(--green-dim); color:var(--green); }
+.tb-hamburger svg{ width:17px; height:17px; }
+.tb-hamburger .icon-close{ display:none; }
+.tb-hamburger.open{ border-color:var(--green); color:var(--green); background:var(--green-bg); }
+.tb-hamburger.open .icon-menu{ display:none; }
+.tb-hamburger.open .icon-close{ display:block; }
+
+/* ---------- backdrop ---------- */
+.mm-overlay{
+  position:fixed; inset:0; z-index:550; background:rgba(5,2,2,.6); backdrop-filter:blur(3px);
+  opacity:0; pointer-events:none; transition:opacity .25s ease;
+}
+.mm-overlay.show{ opacity:1; pointer-events:auto; }
+
+/* ---------- side drawer ---------- */
+.mobile-menu{
+  position:fixed; top:0; right:0; bottom:0; z-index:551; width:min(80vw, 320px);
+  overflow-y:auto; -webkit-overflow-scrolling:touch;
+  background:var(--bg-soft); border-left:1px solid var(--border);
+  padding:18px 18px calc(env(safe-area-inset-bottom, 0px) + 18px);
+  box-shadow:-20px 0 60px -20px rgba(0,0,0,.8), 0 0 0 1px rgba(255,59,78,.05);
+  transform:translateX(100%); transition:transform .3s cubic-bezier(.32,.9,.34,1.02);
+}
+.mobile-menu.open{ transform:translateX(0); }
+
+.mm-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.mm-title{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-faint); }
+.mm-close{
+  width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  background:var(--surface-2); border:1px solid var(--border); color:var(--text-dim); cursor:pointer; padding:0;
+}
+.mm-close svg{ width:14px; height:14px; }
+.mm-close:hover{ color:var(--green); border-color:var(--green-dim); }
+
+.mm-group{ margin-bottom:16px; }
+.mm-group:last-child{ margin-bottom:4px; }
+.mm-group-label{
+  display:block; font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--text-faint); margin:0 4px 8px;
+}
+.mm-item{
+  width:100%; display:flex; align-items:center; gap:12px; padding:12px;
+  background:var(--surface-2); border:1px solid var(--border); border-radius:12px;
+  color:var(--text-dim); font-family:var(--mono); font-size:13.5px; cursor:pointer;
+  margin-bottom:8px; transition:background .15s ease, border-color .15s ease, color .15s ease, transform .1s ease;
+}
+.mm-item:last-child{ margin-bottom:0; }
+.mm-item:active{ transform:scale(.98); }
+.mm-item.on-screen, .mm-item:hover{
+  background:var(--green-bg); color:var(--green); border-color:var(--green-dim);
+}
+.mm-item-icon{
+  width:34px; height:34px; flex:none; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  background:var(--surface); border:1px solid var(--border-soft); transition:border-color .15s ease;
+}
+.mm-item-icon svg{ width:16px; height:16px; }
+.mm-item.on-screen .mm-item-icon, .mm-item:hover .mm-item-icon{ border-color:var(--green-dim); }
+
+/* ---------- breakpoint handoff ---------- */
+@media (max-width:760px){
+  .dock-wrap{ display:none !important; }
+  .tb-hamburger{ display:flex; }
+}
