@@ -19,113 +19,6 @@
   .hero-monitor-body::-webkit-scrollbar{ width:6px; }
   .hero-monitor-body::-webkit-scrollbar-thumb{ background:var(--border); border-radius:6px; }
   
-  /* ---------- HERO GRID: info column (left) + avatar column (right) ---------- */
-  .hero-grid{
-    display:flex; align-items:flex-start; justify-content:space-between; gap:44px;
-  }
-  .hero-info{ flex:1; min-width:0; }
-  .hero-side{
-    flex-shrink:0; display:flex; flex-direction:column; align-items:center;
-    gap:18px; padding-top:2px; width:196px;
-  }
-
-  /* avatar orbit: wraps the frame + gives the floating social icons a
-     positioning context sized to the frame, with room to overflow around it */
-  .hero-avatar-orbit{
-    position:relative; width:164px; height:164px; margin:14px 0 4px;
-  }
-
-  /* avatar frame: spinning conic ring + HUD corner brackets */
-  .hero-avatar-frame{
-    position:relative; width:164px; height:164px; display:flex; align-items:center; justify-content:center;
-  }
-  .hero-avatar-frame::before{
-    content:''; position:absolute; inset:-9px; border-radius:50%;
-    background:conic-gradient(from 0deg, var(--green), transparent 25%, transparent 75%, var(--green));
-    animation:heroRingSpin 5s linear infinite; opacity:.85;
-    -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
-            mask:radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
-  }
-  @keyframes heroRingSpin{ to{ transform:rotate(360deg); } }
-  .hero-avatar{
-    width:146px; height:146px; border-radius:50%; object-fit:cover; position:relative; z-index:1;
-    border:1px solid var(--border-soft); box-shadow:0 0 0 5px var(--surface), 0 0 34px -6px var(--green-glow);
-  }
-  .hero-avatar-frame .corner{
-    position:absolute; width:16px; height:16px; border:2px solid var(--green); opacity:.9; z-index:2;
-  }
-  .hero-avatar-frame .corner.tl{ top:-6px; left:-6px; border-right:none; border-bottom:none; border-radius:4px 0 0 0; }
-  .hero-avatar-frame .corner.tr{ top:-6px; right:-6px; border-left:none; border-bottom:none; border-radius:0 4px 0 0; }
-  .hero-avatar-frame .corner.bl{ bottom:-6px; left:-6px; border-right:none; border-top:none; border-radius:0 0 0 4px; }
-  .hero-avatar-frame .corner.br{ bottom:-6px; right:-6px; border-left:none; border-top:none; border-radius:0 0 4px 0; }
-
-  .hero-id-card{
-    width:100%; border:1px solid var(--border); border-radius:10px;
-    background:linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
-    padding:12px 14px; display:flex; flex-direction:column; gap:9px; position:relative; overflow:hidden;
-    box-shadow:0 0 0 1px var(--border-soft) inset, 0 14px 30px -20px rgba(0,0,0,.6);
-  }
-  .hero-id-card::before{
-    content:''; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(180deg, var(--green-glow), transparent 40%); opacity:.12;
-  }
-  .hero-id-label{
-    font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-faint);
-    font-family:var(--mono); position:relative;
-  }
-  .hero-id-row{
-    display:flex; align-items:center; gap:7px; font-size:12px; color:var(--text-dim);
-    font-family:var(--mono); white-space:nowrap; position:relative;
-  }
-  .hero-id-row.hero-id-status{ color:var(--green); font-weight:600; }
-  .hero-id-loc svg{ width:14px; height:14px; flex-shrink:0; color:var(--text-faint); }
-  .hero-id-divider{ height:1px; background:var(--border-soft); margin:1px 0; position:relative; }
-
-  /* floating social icons — each pinned near a different edge of the
-     avatar, drifting on its own loose, staggered loop so together they
-     read as randomly bobbing rather than a uniform row */
-  .hero-avatar-orbit .hero-social-link{
-    position:absolute; width:38px; height:38px; border-radius:10px;
-    display:flex; align-items:center; justify-content:center; z-index:3;
-    color:var(--text-dim); background:var(--surface); border:1px solid var(--border);
-    box-shadow:0 10px 22px -12px rgba(0,0,0,.6);
-    transition:color .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
-  }
-  .hero-social-link svg{ width:17px; height:17px; }
-  .hero-social-link:hover{ color:var(--green); border-color:var(--green-dim); background:var(--green-bg); box-shadow:0 10px 22px -10px var(--green-glow); }
-
-  .orbit-a{ top:-14px; right:-12px; animation:orbitFloatA 6.4s ease-in-out infinite; }
-  .orbit-b{ bottom:6px; left:-20px; animation:orbitFloatB 7.8s ease-in-out infinite; animation-delay:-2.6s; }
-  .orbit-c{ top:38%; right:-22px; animation:orbitFloatC 5.6s ease-in-out infinite; animation-delay:-4.1s; }
-  .orbit-d{ top:-10px; left:-16px; animation:orbitFloatD 6.9s ease-in-out infinite; animation-delay:-1.4s; }
-.orbit-e{ bottom:-16px; right:8px; animation:orbitFloatE 7.1s ease-in-out infinite; animation-delay:-5.3s; }
-
-  @keyframes orbitFloatA{
-    0%,100%{ transform:translate(0,0) rotate(-5deg); }
-    35%{ transform:translate(5px,-9px) rotate(4deg); }
-    70%{ transform:translate(-3px,-3px) rotate(-2deg); }
-  }
-  @keyframes orbitFloatB{
-    0%,100%{ transform:translate(0,0) rotate(4deg); }
-    40%{ transform:translate(-7px,7px) rotate(-6deg); }
-    75%{ transform:translate(2px,4px) rotate(3deg); }
-  }
-  @keyframes orbitFloatC{
-    0%,100%{ transform:translate(0,0) rotate(-3deg); }
-    45%{ transform:translate(8px,6px) rotate(6deg); }
-    80%{ transform:translate(3px,-4px) rotate(-2deg); }
-  }
-  @keyframes orbitFloatD{
-  0%,100%{ transform:translate(0,0) rotate(5deg); }
-  38%{ transform:translate(-6px,-6px) rotate(-4deg); }
-  72%{ transform:translate(-2px,5px) rotate(3deg); }
-}
-  @keyframes orbitFloatE{
-  0%,100%{ transform:translate(0,0) rotate(-4deg); }
-  42%{ transform:translate(6px,8px) rotate(5deg); }
-  78%{ transform:translate(-4px,2px) rotate(-3deg); }
-}
-
   .boot-log{ font-size:11.5px; color:var(--text-faint); margin-bottom:22px; line-height:1.9; }
   .boot-log .ok{ color:var(--green); }
   .hero-name{
@@ -135,7 +28,7 @@
   .hero-name .glitch-accent{ color:var(--green); text-shadow:0 0 18px var(--green-glow); }
   .hero-role{ font-size:14px; color:var(--cyan); margin:0 0 20px; }
   .hero-role .prefix{ color:var(--text-faint); }
-  .hero-desc{ font-size:14px; color:var(--text-dim); max-width:100%; margin:0 0 26px; }
+  .hero-desc{ font-size:14px; color:var(--text-dim); max-width:560px; margin:0 0 26px; }
   .hero-desc strong{ color:var(--text); font-weight:600; }
   .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:34px; }
   .btn{
@@ -153,48 +46,3 @@
   .stat:last-child{ border-right:none; }
   .stat-num{ font-size:19px; font-weight:700; color:var(--green); }
   .stat-label{ font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.5px; margin-top:2px; }
-/* ---------- SHIELD BADGES ---------- */
-.hero-badges{
-  width:100%; display:flex; justify-content:center; gap:9px; flex-wrap:wrap; padding:2px 4px 0;
-  box-sizing:border-box;
-}
-.badge-shield{
-  position:relative; width:50px; height:56px; cursor:default; transition:transform .25s ease;
-  flex-shrink:0;
-}
-.badge-shield:hover{ transform:translateY(-4px) scale(1.05); }
-.badge-shape{
-  position:absolute; inset:0; width:100%; height:100%;
-  fill:var(--surface); stroke:var(--border); stroke-width:1.5;
-  filter:drop-shadow(0 8px 16px -8px rgba(0,0,0,.7));
-  transition:filter .25s ease, stroke .25s ease;
-}
-.badge-content{
-  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:2px; padding-top:3px; text-align:center;
-}
-.badge-icon{ color:var(--text-dim); transition:color .25s ease; }
-.badge-icon svg{ width:14.5px; height:14.5px; }
-.badge-label{
-  font-family:var(--mono); font-size:9px; font-weight:700; letter-spacing:.3px;
-  color:var(--text); text-transform:uppercase; margin-top:1px;
-}
-.badge-tier{
-  font-family:var(--mono); font-size:6.8px; letter-spacing:.2px;
-  color:var(--text-faint); text-transform:uppercase; margin-top:1px;
-}
-
-/* HTB — green */
-.badge-htb .badge-shape{ stroke:var(--green-dim); }
-.badge-htb:hover .badge-shape{ stroke:var(--green); filter:drop-shadow(0 0 14px -2px var(--green-glow)); }
-.badge-htb:hover .badge-icon{ color:var(--green); }
-
-/* TryHackMe — red */
-.badge-thm .badge-shape{ stroke:#e34a4a55; }
-.badge-thm:hover .badge-shape{ stroke:#e34a4a; filter:drop-shadow(0 0 14px -2px rgba(227,74,74,.55)); }
-.badge-thm:hover .badge-icon{ color:#e34a4a; }
-
-/* Cisco — cyan/blue */
-.badge-cisco .badge-shape{ stroke:var(--cyan); opacity:.5; }
-.badge-cisco:hover .badge-shape{ opacity:1; filter:drop-shadow(0 0 14px -2px var(--cyan)); }
-.badge-cisco:hover .badge-icon{ color:var(--cyan); }
