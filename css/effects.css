@@ -4,9 +4,28 @@
   [data-theme="amber"]{ --green:#E8B75B; --green-dim:#C4933A; --green-glow:rgba(232,183,91,0.35); --green-bg:#2A1F0E; --cyan:#7FD1E8; --cyan-bg:#0E2126; }
 
   /* ================= THEME SWITCHER ================= */
+  /* collapsed into a single toggle button — click to expand the actual
+     colour options in a small popover, instead of 4 dots sitting on
+     screen permanently (room to grow past 4 colours later too) */
   .theme-switch{
-    position:fixed; right:20px; bottom:88px; z-index:50; display:flex; flex-direction:column; gap:8px;
+    position:fixed; right:20px; bottom:20px; z-index:50;
   }
+  .theme-toggle{
+    width:34px; height:34px; border-radius:50%; border:2px solid var(--border);
+    background:var(--surface); cursor:pointer; display:flex; align-items:center; justify-content:center;
+    padding:0; transition:border-color .15s ease, transform .15s ease;
+  }
+  .theme-toggle:hover{ border-color:var(--green-dim); transform:scale(1.08); }
+  .theme-switch.expanded .theme-toggle{ border-color:var(--green); }
+  .theme-toggle-swatch{
+    width:16px; height:16px; border-radius:50%; background:var(--green);
+    box-shadow:0 0 8px -1px var(--green-glow); transition:background .2s ease;
+  }
+  .theme-dots{
+    position:absolute; right:0; bottom:calc(100% + 10px); display:flex; flex-direction:column; gap:8px;
+    opacity:0; pointer-events:none; transform:translateY(6px); transition:opacity .18s ease, transform .18s ease;
+  }
+  .theme-switch.expanded .theme-dots{ opacity:1; pointer-events:auto; transform:translateY(0); }
   .theme-dot{
     width:30px; height:30px; border-radius:50%; border:2px solid var(--border); cursor:pointer;
     transition:.2s ease; position:relative;
