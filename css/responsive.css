@@ -24,21 +24,28 @@
   .dock-item svg{ width:21px; height:21px; }
   .dock-sep{ height:24px; }
 
-  /* theme dots: move off the bottom-right on mobile so they never fight
-     the dock, and lay them out horizontally under the top bar instead
-     (crt/audio toggles now live in the top bar itself, see topbar-nav.css) */
+  /* theme toggle: move off the bottom-right on mobile so it never fights
+     the dock, and drop the popover downward instead of upward since the
+     toggle now sits near the top bar, not the bottom, on small screens */
   .theme-switch{
-    top:68px; bottom:auto; right:14px; flex-direction:row; gap:6px;
+    top:68px; bottom:auto; right:14px;
   }
+  .theme-dots{
+    bottom:auto; top:calc(100% + 10px); right:0; transform:translateY(-6px);
+  }
+  .theme-switch.expanded .theme-dots{ transform:translateY(0); }
 }
 
 /* ---------- 760px ---------- */
 @media (max-width:760px){
   .kc-stage{ flex:1 0 200px; min-width:200px; }
   .exp-grid{ grid-template-columns:1fr; }
-  .topbar-inner{ padding:0 20px; }
+  .topbar-inner{ padding:0 20px; justify-content:flex-start; gap:10px; }
   .tb-user{ font-size:11px; gap:6px; }
   .tb-logo{ display:none; } /* the little avatar icon isn't worth the space on a narrow bar */
+  /* hamburger + name grouped on the left, utility icons pinned right —
+     with 3 flex children now, plain space-between spaced them unevenly */
+  .tb-right{ margin-left:auto; }
 }
 
 /* ---------- 700px ---------- */
@@ -73,7 +80,7 @@
   .code-body{ padding:16px; }
   .pass-checklist{ grid-template-columns:1fr; }
   .subnet-item{ padding:10px 12px; }
-  .skill-row{ grid-template-columns:38% 1fr 64px; gap:8px; }
+  .skill-row{ grid-template-columns:38% 1fr minmax(58px, auto); gap:8px; }
   .skill-name{ font-size:12px; }
   .skill-tier{ font-size:9.5px; }
   /* tb-right now carries 5 items (flags/cmdk/crt/audio/clock) — tighten
@@ -84,9 +91,6 @@
   .cmdk-overlay{ padding-top:8vh; }
   .unlock-box{ padding:28px 20px 22px; }
   .unlock-flags{ font-size:17px; letter-spacing:5px; }
-  .memory-grid{ gap:6px; }
-  .mem-cell{ font-size:17px; }
-  .typing-target{ font-size:12.5px; padding:11px; }
 
   /* the GitHub-style heatmap has 26 fixed columns — on a phone those become
      illegible slivers, so let it scroll horizontally at a readable cell size
