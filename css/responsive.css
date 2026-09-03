@@ -14,27 +14,6 @@
   .hero-monitor-body{ padding:26px 22px; }
   .wrap{ padding:0 20px; }
   .hero{ padding:44px 0 30px; }
-  .hero-grid{ align-items:flex-start; gap:18px; }
-  .hero-side{ width:auto; flex-shrink:0; gap:12px; }
-  .hero-avatar-orbit{ width:116px; height:116px; margin:10px 0 2px; }
-  .hero-avatar-frame{ width:116px; height:116px; }
-  .hero-avatar{ width:100px; height:100px; }
-  .hero-id-card{ width:104px; padding:9px 10px; }
-  .hero-id-label{ font-size:8px; }
-  .hero-id-row{ font-size:10px; gap:5px; white-space:normal; line-height:1.35; }
-  .hero-social-link{ width:32px; height:32px; }
-  .orbit-a{ top:-10px; right:-8px; }
-  .orbit-b{ bottom:2px; left:-14px; }
-  .orbit-c{ top:38%; right:-16px; }
-  .hero-info{ min-width:0; }
-
-  /* shield badges shrink to match the smaller tablet avatar column so
-     three of them never push wider than the info text next to them */
-  .hero-badges{ gap:8px; padding-top:1px; }
-  .badge-shield{ width:44px; height:49px; }
-  .badge-content{ padding-top:2px; }
-  .badge-icon svg{ width:13px; height:13px; }
-  .badge-label{ font-size:8px; }
   .hero-stats{ flex-direction:column; }
   .stat{ border-right:none; border-bottom:1px solid var(--border-soft); }
   .stat:last-child{ border-bottom:none; }
@@ -45,28 +24,21 @@
   .dock-item svg{ width:21px; height:21px; }
   .dock-sep{ height:24px; }
 
-  /* theme toggle: move off the bottom-right on mobile so it never fights
-     the dock, and drop the popover downward instead of upward since the
-     toggle now sits near the top bar, not the bottom, on small screens */
+  /* theme dots: move off the bottom-right on mobile so they never fight
+     the dock, and lay them out horizontally under the top bar instead
+     (crt/audio toggles now live in the top bar itself, see topbar-nav.css) */
   .theme-switch{
-    top:68px; bottom:auto; right:14px;
+    top:68px; bottom:auto; right:14px; flex-direction:row; gap:6px;
   }
-  .theme-dots{
-    bottom:auto; top:calc(100% + 10px); right:0; transform:translateY(-6px);
-  }
-  .theme-switch.expanded .theme-dots{ transform:translateY(0); }
 }
 
 /* ---------- 760px ---------- */
 @media (max-width:760px){
   .kc-stage{ flex:1 0 200px; min-width:200px; }
   .exp-grid{ grid-template-columns:1fr; }
-  .topbar-inner{ padding:0 20px; justify-content:flex-start; gap:10px; }
+  .topbar-inner{ padding:0 20px; }
   .tb-user{ font-size:11px; gap:6px; }
   .tb-logo{ display:none; } /* the little avatar icon isn't worth the space on a narrow bar */
-  /* hamburger + name grouped on the left, utility icons pinned right —
-     with 3 flex children now, plain space-between spaced them unevenly */
-  .tb-right{ margin-left:auto; }
 }
 
 /* ---------- 700px ---------- */
@@ -85,13 +57,6 @@
   .tool-tabs{ flex-wrap:wrap; }
   .hero-actions{ flex-direction:column; align-items:stretch; }
   .hero-actions .btn{ text-align:center; }
-
-  /* stack the hero: avatar/badges centered on top, full-width info
-     block below — sharing a row here left the description, buttons
-     and stat boxes squeezed into a narrow column beside the avatar */
-  .hero-grid{ flex-direction:column; align-items:center; gap:22px; }
-  .hero-side{ width:auto; order:-1; }
-  .hero-info{ width:100%; }
 }
 
 /* ---------- 560px: phones ---------- */
@@ -108,7 +73,7 @@
   .code-body{ padding:16px; }
   .pass-checklist{ grid-template-columns:1fr; }
   .subnet-item{ padding:10px 12px; }
-  .skill-row{ grid-template-columns:38% 1fr minmax(58px, auto); gap:8px; }
+  .skill-row{ grid-template-columns:38% 1fr 64px; gap:8px; }
   .skill-name{ font-size:12px; }
   .skill-tier{ font-size:9.5px; }
   /* tb-right now carries 5 items (flags/cmdk/crt/audio/clock) — tighten
@@ -119,6 +84,9 @@
   .cmdk-overlay{ padding-top:8vh; }
   .unlock-box{ padding:28px 20px 22px; }
   .unlock-flags{ font-size:17px; letter-spacing:5px; }
+  .memory-grid{ gap:6px; }
+  .mem-cell{ font-size:17px; }
+  .typing-target{ font-size:12.5px; padding:11px; }
 
   /* the GitHub-style heatmap has 26 fixed columns — on a phone those become
      illegible slivers, so let it scroll horizontally at a readable cell size
@@ -133,55 +101,12 @@
 
   .theme-switch{ right:10px; }
   .theme-dot{ width:26px; height:26px; }
-
-  /* hero is stacked now (see 640px breakpoint) — avatar/badges centered
-     on top, full-width info block below, so nothing needs to be
-     squeezed into a narrow side column here anymore */
-  .hero-grid{ gap:18px; }
-  .hero-side{ width:auto; gap:10px; }
-  .hero-avatar-orbit{ width:108px; height:108px; margin:2px 0 2px; }
-  .hero-avatar-frame{ width:108px; height:108px; }
-  .hero-avatar{ width:94px; height:94px; }
-  .hero-id-card{ width:88px; padding:7px 8px; gap:6px; }
-  .hero-id-label{ display:none; } /* not enough room for the label row */
-  .hero-id-row{ font-size:9px; gap:4px; white-space:normal; line-height:1.35; }
-  .hero-id-loc svg{ width:11px; height:11px; }
-  .hero-social-link{ width:26px; height:26px; border-radius:7px; }
-  .hero-social-link svg{ width:13px; height:13px; }
-  .orbit-a{ top:-8px; right:-8px; }
-  .orbit-b{ bottom:0; left:-12px; }
-  .orbit-c{ top:36%; right:-16px; }
-
-  /* full page width is available now, so the shields can be a bit
-     more legible than the old cramped-column sizing */
-  .hero-badges{ gap:8px; padding:0; }
-  .badge-shield{ width:36px; height:40px; }
-  .badge-content{ padding-top:2px; gap:1px; }
-  .badge-icon svg{ width:12.5px; height:12.5px; }
-  .badge-label{ font-size:7.5px; letter-spacing:.15px; }
 }
 
 /* ---------- 420px: smallest common phones ---------- */
 @media (max-width:420px){
   body{ zoom:0.65; }
   .hero-name{ font-size:clamp(24px, 8vw, 30px); }
-  .hero-side{ width:auto; }
-  .hero-avatar-orbit{ width:96px; height:96px; margin:2px 0 2px; }
-  .hero-avatar-frame{ width:96px; height:96px; }
-  .hero-avatar{ width:83px; height:83px; }
-  .hero-id-card{ width:76px; }
-  .hero-id-row{ font-size:8.5px; }
-  .orbit-a{ top:-6px; right:-6px; }
-  .orbit-b{ bottom:-2px; left:-10px; }
-  .orbit-c{ top:34%; right:-14px; }
-
-  /* stacked layout still has the full screen width to work with, so
-     the shields can stay readable even on the smallest phones */
-  .hero-badges{ gap:7px; }
-  .badge-shield{ width:32px; height:36px; }
-  .badge-content{ padding-top:1px; gap:1px; }
-  .badge-icon svg{ width:11px; height:11px; }
-  .badge-label{ font-size:6.8px; letter-spacing:0; }
   .dock{ gap:2px; padding:8px 10px; }
   .dock-item{ width:38px; height:38px; }
   .dock-item svg{ width:18px; height:18px; }
